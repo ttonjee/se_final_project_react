@@ -1,0 +1,13 @@
+{
+  "name": "se-final-project-react",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "cd hello-vite && npm run dev",
+    "build": "cd hello-vite && npm run build",
+    "preview": "cd hello-vite && npm run preview",
+    "lint": "cd hello-vite && npm run lint",
+    "install-deps": "cd hello-vite && npm install"
+  },
+  "description": "React News Explorer project with routing"
+}

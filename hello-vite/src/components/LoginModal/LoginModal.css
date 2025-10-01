@@ -1,0 +1,76 @@
+.login-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-modal__label {
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #1a1b22;
+  gap: 8px;
+}
+
+.login-modal__input {
+  padding: 16px 12px;
+  border: 1px solid #d1d2d6;
+  border-radius: 8px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1a1b22;
+  background: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+.login-modal__input:focus {
+  outline: none;
+  border-color: #2f71e5;
+}
+
+.login-modal__input::placeholder {
+  color: #b6bcbf;
+}
+
+.login-modal__input_error {
+  border-color: #ff0000;
+}
+
+.login-modal__error {
+  color: #ff0000;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.login-modal__footer {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.login-modal__text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #1a1b22;
+  margin: 0;
+}
+
+.login-modal__link {
+  background: none;
+  border: none;
+  color: #2f71e5;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: opacity 0.3s ease;
+}
+
+.login-modal__link:hover {
+  opacity: 0.8;
+}
