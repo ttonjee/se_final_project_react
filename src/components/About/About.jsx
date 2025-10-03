@@ -1,9 +1,9 @@
 import React from "react";
-import placeholderImage from "../../assets/placeholder.svg";
+import smilingFace from "../../assets/smiling face.svg";
 import "./About.css";
 
 function About() {
-  console.log("Placeholder image path:", placeholderImage);
+  console.log("Smiling face path:", smilingFace);
 
   return (
     <section className="about-section">
@@ -11,10 +11,14 @@ function About() {
         <div className="about-section__top">
           <div className="about-section__image-container">
             <img
-              src={placeholderImage}
+              src={smilingFace}
               alt="Placeholder image. Put an image of yourself here."
               className="about-section__placeholder"
             />
+            <div className="about-section__placeholder-text">
+              <p>Placeholder image.</p>
+              <p>Put an image of yourself here.</p>
+            </div>
           </div>
 
           <div className="about-section__text">

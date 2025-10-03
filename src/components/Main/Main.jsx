@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
+import About from "../About/About";
 import Footer from "../Footer/Footer";
 import { searchNews } from "../../utils/newsApi";
 import "./Main.css";
@@ -67,35 +68,8 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved }) {
             </div>
           </section>
 
-          {/* About Section */}
-          <section className="about-section">
-            <div className="about-section__content">
-              <h2 className="about-section__title">About the author</h2>
-              <div className="about-section__container">
-                <div className="about-section__image-container">
-                  <div className="about-section__image-placeholder">
-                    <div className="about-section__smile">☺</div>
-                    <p className="about-section__placeholder-text">
-                      Placeholder image.
-                      <br />
-                      Put an image of yourself here.
-                    </p>
-                  </div>
-                </div>
-                <div className="about-section__text">
-                  <p className="about-section__description">
-                    This block describes the project author. Here you should
-                    indicate your name, what you do, and which development
-                    technologies you know.
-                  </p>
-                  <p className="about-section__description">
-                    You can also talk about your experience with TripleTen, what
-                    you learned there, and how you can help potential customers.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
+          {/* About Component */}
+          <About />
         </>
       )}
 
@@ -157,8 +131,8 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved }) {
         </section>
       )}
 
-      {/* Footer only shows when user is logged in */}
-      {isLoggedIn && <Footer />}
+      {/* Footer always shows */}
+      <Footer />
     </main>
   );
 }

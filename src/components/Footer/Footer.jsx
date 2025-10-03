@@ -1,6 +1,6 @@
 import React from 'react';
 import githubIcon from '../../assets/github.svg';
-import linkedinIcon from '../../assets/linkedin.svg';
+import linkedinIcon from '../../assets/icons/Linkedin.svg';
 import './Footer.css';
 
 function Footer() {

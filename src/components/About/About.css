@@ -21,13 +21,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 464px;
+  height: 464px;
+  background-color: #949494;
+  border-radius: 50%;
+  position: relative;
 }
 
 .about-section__placeholder {
-  width: 464px;
-  height: 464px;
-  object-fit: cover;
+  width: 58px;
+  height: 58px;
   display: block;
+}
+
+.about-section__placeholder-text {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #1a1b22;
+  max-width: 266px;
+}
+
+.about-section__placeholder-text p:last-child {
+  margin-bottom: 0;
 }
 
 .about-section__text {
@@ -82,15 +100,16 @@
 
   .about-section__image-container {
     order: 1;
+    width: 320px;
+    height: 320px;
   }
 
   .about-section__text {
     order: 2;
   }
 
-  .about-section__placeholder {
-    width: 320px;
-    height: 320px;
+  .about-section__placeholder-text p {
+    font-size: 14px;
   }
 
   .about-section__title {
