@@ -51,3 +51,16 @@ For production deployment with real News API:
 1. Get an API key from https://newsapi.org/
 2. Replace the mock data in `src/utils/newsApi.js`
 3. Use environment variables for the API key in production
+
+## Project Structure
+The project is now structured as a standard React + Vite application:
+
+```
+se_final_project_react/
+├── src/                  # Source code
+├── public/               # Static assets
+├── dist/                 # Build output
+├── package.json          # Dependencies and scripts
+├── vite.config.js        # Vite configuration
+└── .env.example          # Environment variables template
+```
