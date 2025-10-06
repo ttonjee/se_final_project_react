@@ -82,7 +82,7 @@ export const searchNews = async (query) => {
       return data;
     } else {
       // Fallback to mock data for development
-      console.warn('Using mock data. To use real NewsAPI, set REACT_APP_NEWS_API_KEY environment variable.');
+      console.warn('Using mock data. To use real NewsAPI, set VITE_NEWS_API_KEY environment variable.');
       
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
