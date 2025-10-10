@@ -6,10 +6,20 @@
   right: 0;
   z-index: 100;
   transition: all 0.3s ease;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.header__image {
+  width: 100%;
+  max-width: 1440px; /* Match your content max-width */
+  height: auto;
+  object-fit: contain;
+}
 .header__content {
-  max-width: 1440px;
+  max-width: fit-content;
   min-height: 80px;
   margin: 0 auto;
   display: flex;
@@ -48,6 +58,11 @@
 @media (max-width: 768px) {
   .header {
     padding: 16px 16px;
+  }
+
+  .header__image {
+    width: 100%;
+    max-width: none;
   }
 
   .header__content {
