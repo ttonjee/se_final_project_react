@@ -13,7 +13,6 @@
 }
 
 .header__image {
-  width: 100%;
   max-width: 1440px; /* Match your content max-width */
   height: auto;
   object-fit: contain;
