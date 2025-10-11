@@ -16,8 +16,12 @@ function About() {
               className="about-section__placeholder"
             />
             <div className="about-section__placeholder-text">
-              <p>Placeholder image.</p>
-              <p>Put an image of yourself here.</p>
+              <p className="about-section__placeholder-text-line">
+                Placeholder image.
+              </p>
+              <p className="about-section__placeholder-text-line">
+                Put an image of yourself here.
+              </p>
             </div>
           </div>
 

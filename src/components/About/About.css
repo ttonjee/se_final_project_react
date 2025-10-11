@@ -31,17 +31,20 @@
 .about-section__placeholder {
   width: 58px;
   height: 58px;
-  display: block;
+  display: flex;
+  position: absolute;
+  bottom: 235px;
 }
-
+.about-section__placeholder-text-line {
+  margin: 0;
+}
 .about-section__placeholder-text {
   position: absolute;
-  bottom: 80px;
+  bottom: 177px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  color: #1a1b22;
-  max-width: 266px;
+  color: rgba(255, 255, 255, 1);
 }
 
 .about-section__placeholder-text p:last-child {
