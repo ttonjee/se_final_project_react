@@ -47,16 +47,6 @@
   color: rgba(255, 255, 255, 1);
 }
 
-.about-section__placeholder-text p:last-child {
-  margin-bottom: 0;
-}
-
-.about-section__text {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
 .about-section__title {
   font-family: "Roboto Slab", serif;
   font-weight: 400;
@@ -64,6 +54,21 @@
   line-height: 46px;
   color: rgba(26, 27, 34, 1);
   margin: 0 0 24px 0;
+  text-align: left;
+  position: relative;
+  left: 15px;
+}
+
+.about-section__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 600px;
+  position: relative;
+  top: 67px;
+  left: -54px;
+  letter-spacing: 2.05px;
+  color: rgba(26, 27, 34, 1);
 }
 
 .about-section__description {
