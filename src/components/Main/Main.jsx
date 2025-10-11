@@ -6,6 +6,7 @@ import About from "../About/About";
 import Footer from "../Footer/Footer";
 import { searchNews } from "../../utils/newsApi";
 import "./Main.css";
+import searchFieldPng from "../../assets/search-field.png";
 
 function Main({ articles, setArticles, onSaveArticle, isArticleSaved }) {
   const [isLoading, setIsLoading] = useState(false);
