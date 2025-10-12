@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../Header/Header";
 import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
-import LoginModal from "../LoginModal/LoginModal";
+import LoginModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 
 function SavedNewsPage({ savedArticles = [], onRemoveArticle }) {
@@ -43,7 +43,7 @@ function SavedNewsPage({ savedArticles = [], onRemoveArticle }) {
   return (
     <div>
       <Header onSignInClick={handleSignInClick} />
-      <SavedNews 
+      <SavedNews
         savedArticles={savedArticles}
         onRemoveArticle={onRemoveArticle}
       />

@@ -1,32 +1,30 @@
 import React, { useState } from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import LoginModal from "../LoginModal/LoginModal";
+import SignInModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 
 function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved }) {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   const handleSignInClick = () => {
-    console.log("Sign In clicked");
-    setIsLoginModalOpen(true);
+    console.log("Sign in button clicked");
+    setIsSignInModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setIsLoginModalOpen(false);
+    setIsSignInModalOpen(false);
     setIsRegisterModalOpen(false);
   };
 
-  const handleLogin = (loginData) => {
-    console.log("Login data:", loginData);
-    // TODO: Implement actual login logic
+  const handleSignIn = (loginData) => {
+    console.log("Sign in data:", loginData);
     handleCloseModal();
   };
 
   const handleRegister = (registerData) => {
     console.log("Register data:", registerData);
-    // TODO: Implement actual register logic
     handleCloseModal();
   };
 
@@ -49,10 +47,10 @@ function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved }) {
         onSaveArticle={onSaveArticle}
         isArticleSaved={isArticleSaved}
       />
-      <LoginModal
-        isOpen={isLoginModalOpen}
+      <SignInModal
+        isOpen={isSignInModalOpen}
         onClose={handleCloseModal}
-        onLogin={handleLogin}
+        onSignIn={handleSignIn}
         onSwitchToRegister={handleSwitchToRegister}
       />
       <RegisterModal

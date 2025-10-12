@@ -2,20 +2,54 @@ import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../HomePage/HomePage";
 import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
+import LoginModal from "../SignInModal/SignInModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 import "./App.css";
 
 function App() {
   const [articles, setArticles] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  // Open Login Modal
+  const handleSignInClick = () => {
+    setIsLoginModalOpen(true);
+  };
+
+  // Close all modals
+  const handleCloseModal = () => {
+    setIsLoginModalOpen(false);
+    setIsRegisterModalOpen(false);
+  };
+
+  // Switch between modals
+  const handleSwitchToRegister = () => {
+    setIsLoginModalOpen(false);
+    setIsRegisterModalOpen(true);
+  };
+
+  const handleSwitchToLogin = () => {
+    setIsRegisterModalOpen(false);
+    setIsLoginModalOpen(true);
+  };
+
+  // Handle login logic
+  const handleLogin = (loginData) => {
+    console.log("Login Data:", loginData);
+    handleCloseModal();
+  };
+
+  // Handle registration logic
+  const handleRegister = (registerData) => {
+    console.log("Register Data:", registerData);
+    handleCloseModal();
+  };
 
   const handleSaveArticle = (article) => {
     setSavedArticles((prev) => {
-      // Check if article is already saved
       const isAlreadySaved = prev.some((saved) => saved.url === article.url);
-      if (isAlreadySaved) {
-        return prev;
-      }
-      return [...prev, article];
+      return isAlreadySaved ? prev : [...prev, article];
     });
   };
 
@@ -40,6 +74,7 @@ function App() {
               setArticles={setArticles}
               onSaveArticle={handleSaveArticle}
               isArticleSaved={isArticleSaved}
+              onSignInClick={handleSignInClick}
             />
           }
         />
@@ -49,10 +84,25 @@ function App() {
             <SavedNewsPage
               savedArticles={savedArticles}
               onRemoveArticle={handleRemoveArticle}
+              onSignInClick={handleSignInClick}
             />
           }
         />
       </Routes>
+
+      {/* Modals rendered outside Routes to be always available */}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={handleCloseModal}
+        onLogin={handleLogin}
+        onSwitchToRegister={handleSwitchToRegister}
+      />
+      <RegisterModal
+        isOpen={isRegisterModalOpen}
+        onClose={handleCloseModal}
+        onRegister={handleRegister}
+        onSwitchToLogin={handleSwitchToLogin}
+      />
     </div>
   );
 }
