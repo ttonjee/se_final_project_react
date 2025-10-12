@@ -44,63 +44,14 @@ function RegisterModal({ isOpen, onClose, onRegister, onSwitchToLogin }) {
 
   return (
     <ModalWithForm
-      title="Sign up"
+      titleText="Sign up"
       buttonText="Sign up"
       isOpen={isOpen}
-      onClose={handleClose}
+      handleClose={handleClose}
       onSubmit={handleSubmit}
-    >
-      <div className="modal__form">
-        <label className="modal__label">
-          Email
-          <input
-            className={`modal__input${errors.email ? " modal__input_error" : ""}`}
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter email"
-            required
-          />
-          {errors.email && (
-            <span className="modal__error">{errors.email}</span>
-          )}
-        </label>
-
-        <label className="modal__label">
-          Password
-          <input
-            className={`modal__input${errors.password ? " modal__input_error" : ""}`}
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter password"
-            required
-          />
-          {errors.password && (
-            <span className="modal__error">{errors.password}</span>
-          )}
-        </label>
-
-        <label className="modal__label">
-          Username
-          <input
-            className={`modal__input${errors.username ? " modal__input_error" : ""}`}
-            type="text"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
-            required
-          />
-          {errors.username && (
-            <span className="modal__error">{errors.username}</span>
-          )}
-        </label>
-      </div>
-
-      <div className="modal__footer">
+      containerClassName="modal__container--register"
+      formClassName="modal__form--register"
+      alternativeButton={
         <p className="modal__text">
           or{" "}
           <button
@@ -111,7 +62,50 @@ function RegisterModal({ isOpen, onClose, onRegister, onSwitchToLogin }) {
             Sign in
           </button>
         </p>
-      </div>
+      }
+    >
+      <label className="modal__label">
+        Email
+        <input
+          className="modal__input-line"
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter email"
+          required
+        />
+        {errors.email && <span className="modal__error">{errors.email}</span>}
+      </label>
+
+      <label className="modal__label">
+        Password
+        <input
+          className="modal__input-line"
+          type="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Enter password"
+          required
+        />
+      </label>
+
+      <label className="modal__label">
+        Username
+        <input
+          className="modal__input-line"
+          type="text"
+          name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter your username"
+          required
+        />
+        {errors.username && (
+          <span className="modal__error">{errors.username}</span>
+        )}
+      </label>
     </ModalWithForm>
   );
 }

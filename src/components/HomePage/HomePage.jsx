@@ -29,13 +29,13 @@ function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved }) {
   };
 
   const handleSwitchToRegister = () => {
-    setIsLoginModalOpen(false);
+    setIsSignInModalOpen(false);
     setIsRegisterModalOpen(true);
   };
 
   const handleSwitchToLogin = () => {
     setIsRegisterModalOpen(false);
-    setIsLoginModalOpen(true);
+    setIsSignInModalOpen(true);
   };
 
   return (

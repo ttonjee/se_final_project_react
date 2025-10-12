@@ -1,20 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 import CloseIcon from "../../assets/close.png";
 import "../Header/Header.css";
 import "./ModalWithForm.css";
 
 function ModalWithForm({
-  children,
   buttonText,
   alternativeButton,
   titleText,
   isOpen,
   handleClose,
   onSubmit,
+  children,
+  containerClassName = "",
+  formClassName = "",
+  titleClassName = "",
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      <div className="modal__container">
+      <div className={`modal__container ${containerClassName}`}>
         <button
           type="button"
           className="modal__close-button"
@@ -23,7 +26,7 @@ function ModalWithForm({
           <img src={CloseIcon} alt="Close" className="modal__close-icon" />
         </button>
         <h2 className="modal__title">{titleText}</h2>
-        <form onSubmit={onSubmit} className="modal__form">
+        <form onSubmit={onSubmit} className={`modal__form ${formClassName}`}>
           {children}
           {(buttonText || alternativeButton) && (
             <div className="modal__button-row">
