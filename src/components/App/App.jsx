@@ -11,6 +11,9 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [visibleArticles, setVisibleArticles] = useState(3);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   // Open Login Modal
   const handleSignInClick = () => {
@@ -46,6 +49,35 @@ function App() {
     handleCloseModal();
   };
 
+  const handleSearch = async (query) => {
+    if (!query.trim()) {
+      setError("Please enter a keyword");
+      setArticles([]);
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const data = await fetchNewsArticles(query);
+      if (data.articles.length === 0) {
+        setError("Nothing Found");
+        setArticles([]);
+      } else {
+        setArticles(data.articles);
+        setVisibleArticles(3);
+      }
+    } catch (err) {
+      setError(
+        "Sorry, something went wrong during the request. Please try again later."
+      );
+      setArticles([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleSaveArticle = (article) => {
     setSavedArticles((prev) => {
       const isAlreadySaved = prev.some((saved) => saved.url === article.url);
@@ -74,6 +106,7 @@ function App() {
               setArticles={setArticles}
               onSaveArticle={handleSaveArticle}
               isArticleSaved={isArticleSaved}
+              onRemoveArticle={handleRemoveArticle}
               onSignInClick={handleSignInClick}
             />
           }

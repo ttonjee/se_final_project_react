@@ -8,7 +8,7 @@ import { searchNews } from "../../utils/newsApi";
 import "./Main.css";
 import searchFieldPng from "../../assets/search-field.png";
 
-function Main({ articles, setArticles, onSaveArticle, isArticleSaved }) {
+function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveArticle }) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [error, setError] = useState(null);

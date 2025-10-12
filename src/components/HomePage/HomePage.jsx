@@ -4,7 +4,7 @@ import Main from "../Main/Main";
 import SignInModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 
-function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved }) {
+function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveArticle }) {
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
@@ -46,6 +46,7 @@ function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved }) {
         setArticles={setArticles}
         onSaveArticle={onSaveArticle}
         isArticleSaved={isArticleSaved}
+        onRemoveArticle={onRemoveArticle}
       />
       <SignInModal
         isOpen={isSignInModalOpen}
