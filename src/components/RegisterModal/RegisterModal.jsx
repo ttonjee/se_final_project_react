@@ -50,13 +50,11 @@ function RegisterModal({ isOpen, onClose, onRegister, onSwitchToLogin }) {
       onClose={handleClose}
       onSubmit={handleSubmit}
     >
-      <div className="register-modal__form">
-        <label className="register-modal__label">
+      <div className="modal__form">
+        <label className="modal__label">
           Email
           <input
-            className={`register-modal__input ${
-              errors.email ? "register-modal__input_error" : ""
-            }`}
+            className={`modal__input${errors.email ? " modal__input_error" : ""}`}
             type="email"
             name="email"
             value={email}
@@ -65,16 +63,14 @@ function RegisterModal({ isOpen, onClose, onRegister, onSwitchToLogin }) {
             required
           />
           {errors.email && (
-            <span className="register-modal__error">{errors.email}</span>
+            <span className="modal__error">{errors.email}</span>
           )}
         </label>
 
-        <label className="register-modal__label">
+        <label className="modal__label">
           Password
           <input
-            className={`register-modal__input ${
-              errors.password ? "register-modal__input_error" : ""
-            }`}
+            className={`modal__input${errors.password ? " modal__input_error" : ""}`}
             type="password"
             name="password"
             value={password}
@@ -83,16 +79,14 @@ function RegisterModal({ isOpen, onClose, onRegister, onSwitchToLogin }) {
             required
           />
           {errors.password && (
-            <span className="register-modal__error">{errors.password}</span>
+            <span className="modal__error">{errors.password}</span>
           )}
         </label>
 
-        <label className="register-modal__label">
+        <label className="modal__label">
           Username
           <input
-            className={`register-modal__input ${
-              errors.username ? "register-modal__input_error" : ""
-            }`}
+            className={`modal__input${errors.username ? " modal__input_error" : ""}`}
             type="text"
             name="username"
             value={username}
@@ -101,17 +95,17 @@ function RegisterModal({ isOpen, onClose, onRegister, onSwitchToLogin }) {
             required
           />
           {errors.username && (
-            <span className="register-modal__error">{errors.username}</span>
+            <span className="modal__error">{errors.username}</span>
           )}
         </label>
       </div>
 
-      <div className="register-modal__footer">
-        <p className="register-modal__text">
+      <div className="modal__footer">
+        <p className="modal__text">
           or{" "}
           <button
             type="button"
-            className="register-modal__link"
+            className="modal__link"
             onClick={onSwitchToLogin}
           >
             Sign in

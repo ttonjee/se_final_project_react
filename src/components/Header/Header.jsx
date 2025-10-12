@@ -1,13 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
-import headerLogoutIcon from "../../assets/icons/header-logout.svg";
+import vectorIcon from "../../assets/vector-stroke.svg";
+
 import "./Header.css";
 
 function Header({ onSignInClick }) {
   return (
     <header className="header">
-      <img src={headerLogoutIcon} alt="Header Logout" className="header__image" />
+      <div className="header__container">
+        <h1 className="header__title">NewsExplore</h1>
+        <nav className="header__nav">
+          <Link to="/" className="header__link-title">
+            Home
+            <img
+              src={vectorIcon}
+              alt="vector icon"
+              className="header__underline"
+            />
+          </Link>
+          <button className="header__button" onClick={onSignInClick}>
+            {" "}
+            Sign in
+          </button>
+        </nav>
+      </div>
     </header>
   );
 }

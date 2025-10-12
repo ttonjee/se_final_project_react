@@ -44,13 +44,11 @@ function LoginModal({ isOpen, onClose, onLogin, onSwitchToRegister }) {
       onClose={handleClose}
       onSubmit={handleSubmit}
     >
-      <div className="login-modal__form">
-        <label className="login-modal__label">
+      <div className="modal__form">
+        <label className="modal__label">
           Email
           <input
-            className={`login-modal__input ${
-              errors.email ? "login-modal__input_error" : ""
-            }`}
+            className={`modal__input${errors.email ? " modal__input_error" : ""}`}
             type="email"
             name="email"
             value={email}
@@ -59,16 +57,14 @@ function LoginModal({ isOpen, onClose, onLogin, onSwitchToRegister }) {
             required
           />
           {errors.email && (
-            <span className="login-modal__error">{errors.email}</span>
+            <span className="modal__error">{errors.email}</span>
           )}
         </label>
 
-        <label className="login-modal__label">
+        <label className="modal__label">
           Password
           <input
-            className={`login-modal__input ${
-              errors.password ? "login-modal__input_error" : ""
-            }`}
+            className={`modal__input${errors.password ? " modal__input_error" : ""}`}
             type="password"
             name="password"
             value={password}
@@ -77,17 +73,17 @@ function LoginModal({ isOpen, onClose, onLogin, onSwitchToRegister }) {
             required
           />
           {errors.password && (
-            <span className="login-modal__error">{errors.password}</span>
+            <span className="modal__error">{errors.password}</span>
           )}
         </label>
       </div>
 
-      <div className="login-modal__footer">
-        <p className="login-modal__text">
+      <div className="modal__footer">
+        <p className="modal__text">
           or{" "}
           <button
             type="button"
-            className="login-modal__link"
+            className="modal__link"
             onClick={onSwitchToRegister}
           >
             Sign up

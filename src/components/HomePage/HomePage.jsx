@@ -9,6 +9,7 @@ function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved }) {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   const handleSignInClick = () => {
+    console.log("Sign In clicked");
     setIsLoginModalOpen(true);
   };
 
@@ -42,7 +43,7 @@ function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved }) {
   return (
     <div>
       <Header onSignInClick={handleSignInClick} />
-      <Main 
+      <Main
         articles={articles}
         setArticles={setArticles}
         onSaveArticle={onSaveArticle}
