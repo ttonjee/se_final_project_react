@@ -1,3 +1,11 @@
+/* Article cards grid styling */
+.main__cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 64px;
+  padding: 0;
+}
 .main {
   max-height: 100vh;
   max-width: 1440px;
@@ -41,21 +49,14 @@
 }
 
 .results-section {
-  padding: 60px 0;
   background-color: #f8f9fa;
 }
 
 .results-section__content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 80px 104px 80px 104px;
   text-align: center;
-}
-
-.results-section__content p {
-  font-size: 1.2rem;
-  color: #6c757d;
-  padding: 40px;
 }
 
 .results-section__title {
@@ -65,14 +66,7 @@
   line-height: 46px;
   color: #1a1b22;
   margin: 0 0 64px 0;
-  text-align: center;
-}
-
-.results-section__cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 40px;
+  text-align: left;
 }
 
 .results-section__error,

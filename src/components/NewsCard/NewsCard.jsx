@@ -9,10 +9,10 @@ function NewsCard({
   isSaved = false,
   onSave = null,
   onRemove = null,
-  showKeyword = false,
-  keyword = "",
+  // keyword removed
   isLoggedIn = false, // Add prop to track login status
 }) {
+  console.log("NewsCard article:", article);
   const [showTooltip, setShowTooltip] = useState(false);
 
   if (!article) return null;
@@ -42,15 +42,20 @@ function NewsCard({
   // Format the publication date
   const formattedDate = formatPublicationDate(article.publishedAt);
 
+  console.log("=====================");
+  console.log(article);
+
   return (
     <article className="news-card">
-      {article.urlToImage && (
+      {/* {article?.urlToImage && ( */}
+      <div className="news-card__image-wrapper">
         <img
           className="news-card__image"
           src={article.urlToImage}
           alt={article.title}
         />
-      )}
+      </div>
+      {/* )} */}
 
       {/* Save/Remove button with tooltip */}
       <div className="news-card__save-container">
@@ -63,35 +68,29 @@ function NewsCard({
           onMouseLeave={handleMouseLeave}
           aria-label={isSaved ? "Remove from saved" : "Save article"}
         >
-          <img 
-            src={isSaved ? BookmarkFilledIcon : BookmarkIcon} 
+          <img
+            src={isSaved ? BookmarkFilledIcon : BookmarkIcon}
             alt={isSaved ? "Remove bookmark" : "Add bookmark"}
             className="news-card__bookmark-icon"
           />
         </button>
         {showTooltip && (
-          <div className="news-card__tooltip">
-            Sign in to save articles
-          </div>
+          <div className="news-card__tooltip">Sign in to save articles</div>
         )}
       </div>
 
       <div className="news-card__content">
-        {showKeyword && keyword && (
-          <span className="news-card__keyword">{keyword}</span>
-        )}
-        
+        {/* keyword removed */}
+
         {/* Publication date */}
-        {formattedDate && (
-          <p className="news-card__date">{formattedDate}</p>
-        )}
-        
+        {formattedDate && <p className="news-card__date">{formattedDate}</p>}
+
         {/* Publication title */}
         <h3 className="news-card__title">{article.title}</h3>
-        
+
         {/* Publication description */}
         <p className="news-card__description">{article.description}</p>
-        
+
         {/* Source name */}
         <p className="news-card__source">{article.source?.name}</p>
       </div>
