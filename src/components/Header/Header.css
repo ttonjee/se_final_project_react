@@ -29,6 +29,24 @@
   border: 1px solid transparent;
 }
 
+.header__container--saved {
+  box-shadow: 0px -1px 0px 0px rgba(209, 210, 214, 1) inset;
+}
+
+.header__link-title.header__nav--saved,
+.header__link-title--saved {
+  color: #1a1b22 !important;
+}
+.header__button.header__nav--saved,
+.header__button--saved {
+  color: #1a1b22 !important;
+  border-color: rgba(26, 27, 34, 0.5);
+}
+
+.header__container--saved .header__title--saved {
+  color: rgba(26, 27, 34, 1) !important;
+}
+
 .header__content {
   display: flex;
   align-items: center;

@@ -62,7 +62,9 @@ function SignInModal({ isOpen, onClose, onSignIn, onSwitchToRegister }) {
           placeholder="Enter email"
           required
         />
-        {errors.email && <span className="modal__error">{errors.email}</span>}
+        {errors.email && (
+          <span className="modal__error" style={{ color: 'red' }}>{errors.email}</span>
+        )}
       </label>
 
       <label className="modal__label">

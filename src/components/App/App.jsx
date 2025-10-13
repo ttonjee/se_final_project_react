@@ -5,41 +5,44 @@ import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
 import LoginModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import "./App.css";
+import SignInModal from "../SignInModal/SignInModal";
 
 function App() {
   const [articles, setArticles] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [visibleArticles, setVisibleArticles] = useState(3);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [user, setUser] = useState(null);
 
-  // Open Login Modal
+  // Open Sign In Modal
   const handleSignInClick = () => {
-    setIsLoginModalOpen(true);
+    setIsSignInModalOpen(true);
   };
 
   // Close all modals
   const handleCloseModal = () => {
-    setIsLoginModalOpen(false);
+    setIsSignInModalOpen(false);
     setIsRegisterModalOpen(false);
   };
 
   // Switch between modals
   const handleSwitchToRegister = () => {
-    setIsLoginModalOpen(false);
+    setIsSignInModalOpen(false);
     setIsRegisterModalOpen(true);
   };
 
   const handleSwitchToLogin = () => {
     setIsRegisterModalOpen(false);
-    setIsLoginModalOpen(true);
+    setIsSignInModalOpen(true);
   };
 
   // Handle login logic
   const handleLogin = (loginData) => {
     console.log("Login Data:", loginData);
+    setUser({ name: loginData.email.split("@")[0], email: loginData.email });
     handleCloseModal();
   };
 
@@ -98,6 +101,7 @@ function App() {
   return (
     <div className="app">
       <Routes>
+        {/* DEBUG: Current route will render below. If you only see Saved Articles, check your browser address bar. */}
         <Route
           path="/"
           element={
@@ -118,15 +122,15 @@ function App() {
               savedArticles={savedArticles}
               onRemoveArticle={handleRemoveArticle}
               onSignInClick={handleSignInClick}
-              user={null} // TODO: Pass actual user state here if available
+              user={user}
             />
           }
         />
       </Routes>
 
       {/* Modals rendered outside Routes to be always available */}
-      <LoginModal
-        isOpen={isLoginModalOpen}
+      <SignInModal
+        isOpen={isSignInModalOpen}
         onClose={handleCloseModal}
         onLogin={handleLogin}
         onSwitchToRegister={handleSwitchToRegister}

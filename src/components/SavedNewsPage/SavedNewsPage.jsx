@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import Header from "../Header/Header";
 import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
-import LoginModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import SignInModal from "../SignInModal/SignInModal";
 
 function SavedNewsPage({ savedArticles = [], onRemoveArticle, user }) {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   const handleSignInClick = () => {
-    setIsLoginModalOpen(true);
+    setIsSignInModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setIsLoginModalOpen(false);
+    setIsSignInModalOpen(false);
     setIsRegisterModalOpen(false);
   };
 
@@ -31,26 +31,31 @@ function SavedNewsPage({ savedArticles = [], onRemoveArticle, user }) {
   };
 
   const handleSwitchToRegister = () => {
-    setIsLoginModalOpen(false);
+    setIsSignInModalOpen(false);
     setIsRegisterModalOpen(true);
   };
 
   const handleSwitchToLogin = () => {
     setIsRegisterModalOpen(false);
-    setIsLoginModalOpen(true);
+    setIsSignInModalOpen(true);
   };
 
   return (
     <div>
-  <Header onSignInClick={handleSignInClick} user={user} />
+      <Header
+        onSignInClick={handleSignInClick}
+        user={user}
+        showUsernameOnly={true}
+        style={{ backgroundColor: "#fff", color: "#000" }}
+      />
       <SavedNews
         savedArticles={savedArticles}
         onRemoveArticle={onRemoveArticle}
         user={user}
       />
       <Footer />
-      <LoginModal
-        isOpen={isLoginModalOpen}
+      <SignInModal
+        isOpen={isSignInModalOpen}
         onClose={handleCloseModal}
         onLogin={handleLogin}
         onSwitchToRegister={handleSwitchToRegister}

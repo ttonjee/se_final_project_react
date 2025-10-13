@@ -1,14 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import vectorIcon from "../../assets/vector-stroke.svg";
-import logoutIcon from "../../assets/logout.svg";
-function Header({ onSignInClick, user }) {
+
+function Header({ onSignInClick, user, showUsernameOnly }) {
+  const location = useLocation();
+  const isSavedPage = location.pathname === "/saved-news";
+
   return (
     <header className="header">
-      <div className="header__container">
-        <h1 className="header__title">NewsExplore</h1>
-        <nav className="header__nav">
-          <Link to="/" className="header__link-title">
+      <div
+        className={`header__container ${
+          isSavedPage ? "header__container--saved" : ""
+        }`}
+      >
+        <h1
+          className={`header__title${
+            isSavedPage ? " header__title--saved" : ""
+          }`}
+        >
+          NewsExplore
+        </h1>
+        <nav
+          className={`header__nav${isSavedPage ? " header__nav--saved" : ""}`}
+        >
+          <Link
+            to="/"
+            className={`header__link-title${
+              isSavedPage ? " header__link-title--saved" : ""
+            }`}
+          >
             Home
             <img
               src={vectorIcon}
@@ -17,18 +37,33 @@ function Header({ onSignInClick, user }) {
             />
           </Link>
           {user && (
-            <Link to="/saved-news" className="header__link-title">
+            <Link
+              to="/saved-news"
+              className={`header__link-title${
+                isSavedPage ? " header__link-title--saved" : ""
+              }`}
+            >
               Saved Articles
             </Link>
           )}
-          <button className="header__button" onClick={onSignInClick}>
-            {user ? (
-              <>
-                {user.name}
-                <img src={logoutIcon} alt="Logout" className="header__logout-icon" style={{ marginLeft: 8, verticalAlign: 'middle', width: 20, height: 20 }} />
-              </>
-            ) : "Sign in"}
-          </button>
+          {showUsernameOnly && user ? (
+            <span
+              className={`header__button${
+                isSavedPage ? " header__button--saved" : ""
+              }`}
+            >
+              {user.name}
+            </span>
+          ) : (
+            <button
+              className={`header__button${
+                isSavedPage ? " header__button--saved" : ""
+              }`}
+              onClick={onSignInClick}
+            >
+              {user ? user.name : "Sign in"}
+            </button>
+          )}
         </nav>
       </div>
     </header>

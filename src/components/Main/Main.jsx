@@ -51,13 +51,12 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
 
   return (
     <main className="main">
-      {/* Show home page and about section only when user is not logged in */}
-  {!effectiveLoggedIn && (
-        <>
-          <section className="search-section">
-            <div className="search-section__content">
-              <h1 className="search-section__title">
-                What's going on in
+      {/* Always show home page and about section */}
+      <>
+        <section className="search-section">
+          <div className="search-section__content">
+            <h1 className="search-section__title">
+              What's going on in
                 <br />
                 the world?
               </h1>
@@ -72,7 +71,7 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
           {/* About Component */}
           <About />
         </>
-      )}
+      
 
       {/* Show search results section only when user is logged in or has searched */}
   {(effectiveLoggedIn || hasSearched) && (
