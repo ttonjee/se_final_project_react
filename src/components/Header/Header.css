@@ -1,3 +1,9 @@
+.header__logout-icon {
+  filter: brightness(0) invert(1);
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
 .header {
   position: absolute;
   top: 39px;

@@ -8,15 +8,15 @@ import { searchNews } from "../../utils/newsApi";
 import "./Main.css";
 import searchFieldPng from "../../assets/search-field.png";
 
-function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveArticle }) {
+function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveArticle, isLoggedIn }) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleArticles, setVisibleArticles] = useState(3); // Show 3 initially per requirements
-
-  // Temporary state to simulate login - replace with actual auth when implemented
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // Temporary state to simulate login if prop is not provided
+  const [localLoggedIn, setLocalLoggedIn] = useState(false);
+  const effectiveLoggedIn = typeof isLoggedIn === "boolean" ? isLoggedIn : localLoggedIn;
 
   const handleSearch = async (query) => {
     setIsLoading(true);
@@ -51,31 +51,29 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
 
   return (
     <main className="main">
-      {/* Show home page and about section only when user is not logged in */}
-      {!isLoggedIn && (
-        <>
-          <section className="search-section">
-            <div className="search-section__content">
-              <h1 className="search-section__title">
-                What's going on in
-                <br />
-                the world?
-              </h1>
-              <p className="search-section__subtitle">
-                Find the latest news on any topic and save them in your personal
-                account
-              </p>
-              <SearchForm onSearch={handleSearch} />
-            </div>
-          </section>
+      {/* Always show search and about sections */}
+      <>
+        <section className="search-section">
+          <div className="search-section__content">
+            <h1 className="search-section__title">
+              What's going on in
+              <br />
+              the world?
+            </h1>
+            <p className="search-section__subtitle">
+              Find the latest news on any topic and save them in your personal
+              account
+            </p>
+            <SearchForm onSearch={handleSearch} />
+          </div>
+        </section>
 
-          {/* About Component */}
-          <About />
-        </>
-      )}
+        {/* About Component */}
+        <About />
+      </>
 
       {/* Show search results section only when user is logged in or has searched */}
-      {(isLoggedIn || hasSearched) && (
+  {(effectiveLoggedIn || hasSearched) && (
         <section className="results-section">
           <div className="results-section__content">
             {/* Show preloader during search */}
@@ -113,7 +111,7 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
                       onRemove={onRemoveArticle}
                       showKeyword={true}
                       keyword={searchQuery}
-                      isLoggedIn={isLoggedIn}
+                      isLoggedIn={effectiveLoggedIn}
                     />
                   ))}
                 </div>

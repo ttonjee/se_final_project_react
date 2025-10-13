@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navigation from "../Navigation/Navigation";
 import vectorIcon from "../../assets/vector-stroke.svg";
-
-import "./Header.css";
-
-function Header({ onSignInClick }) {
+import logoutIcon from "../../assets/logout.svg";
+function Header({ onSignInClick, user }) {
   return (
     <header className="header">
       <div className="header__container">
@@ -19,9 +16,18 @@ function Header({ onSignInClick }) {
               className="header__underline"
             />
           </Link>
+          {user && (
+            <Link to="/saved-news" className="header__link-title">
+              Saved Articles
+            </Link>
+          )}
           <button className="header__button" onClick={onSignInClick}>
-            {" "}
-            Sign in
+            {user ? (
+              <>
+                {user.name}
+                <img src={logoutIcon} alt="Logout" className="header__logout-icon" style={{ marginLeft: 8, verticalAlign: 'middle', width: 20, height: 20 }} />
+              </>
+            ) : "Sign in"}
           </button>
         </nav>
       </div>

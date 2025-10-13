@@ -1,6 +1,6 @@
 .saved-news-header {
-  background-color: #f5f6f7;
   padding: 80px 0 40px 0;
+  text-align: left;
 }
 
 .saved-news-header__content {
@@ -23,8 +23,6 @@
   font-size: 40px;
   line-height: 46px;
   color: #1a1b22;
-  margin: 0 0 32px 0;
-  max-width: 720px;
 }
 
 .saved-news-header__keywords {

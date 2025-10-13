@@ -118,6 +118,7 @@ function App() {
               savedArticles={savedArticles}
               onRemoveArticle={handleRemoveArticle}
               onSignInClick={handleSignInClick}
+              user={null} // TODO: Pass actual user state here if available
             />
           }
         />

@@ -5,6 +5,7 @@ import SignInModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 
 function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveArticle }) {
+  const [user, setUser] = useState(null);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
@@ -19,7 +20,8 @@ function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved, onRemo
   };
 
   const handleSignIn = (loginData) => {
-    console.log("Sign in data:", loginData);
+    // Simulate login and set user
+    setUser({ name: loginData.email.split('@')[0], email: loginData.email });
     handleCloseModal();
   };
 
@@ -40,13 +42,14 @@ function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved, onRemo
 
   return (
     <div>
-      <Header onSignInClick={handleSignInClick} />
+      <Header onSignInClick={handleSignInClick} user={user} />
       <Main
         articles={articles}
         setArticles={setArticles}
         onSaveArticle={onSaveArticle}
         isArticleSaved={isArticleSaved}
         onRemoveArticle={onRemoveArticle}
+        isLoggedIn={!!user}
       />
       <SignInModal
         isOpen={isSignInModalOpen}

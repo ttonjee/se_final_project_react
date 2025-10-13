@@ -3,10 +3,10 @@ import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import SavedArticlesList from "../SavedArticlesList/SavedArticlesList";
 import "./SavedNews.css";
 
-function SavedNews({ savedArticles = [], onRemoveArticle }) {
+function SavedNews({ savedArticles = [], onRemoveArticle, user }) {
   return (
     <main className="saved-news">
-      <SavedNewsHeader userName="Elise" savedCount={savedArticles.length} />
+      <SavedNewsHeader userName={user?.name || "Guest"} savedCount={savedArticles.length} />
       <SavedArticlesList
         articles={savedArticles}
         onRemoveArticle={onRemoveArticle}

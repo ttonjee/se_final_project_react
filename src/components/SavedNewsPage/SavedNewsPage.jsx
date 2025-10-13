@@ -5,7 +5,7 @@ import Footer from "../Footer/Footer";
 import LoginModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 
-function SavedNewsPage({ savedArticles = [], onRemoveArticle }) {
+function SavedNewsPage({ savedArticles = [], onRemoveArticle, user }) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
@@ -42,10 +42,11 @@ function SavedNewsPage({ savedArticles = [], onRemoveArticle }) {
 
   return (
     <div>
-      <Header onSignInClick={handleSignInClick} />
+  <Header onSignInClick={handleSignInClick} user={user} />
       <SavedNews
         savedArticles={savedArticles}
         onRemoveArticle={onRemoveArticle}
+        user={user}
       />
       <Footer />
       <LoginModal
