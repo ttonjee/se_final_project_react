@@ -4,7 +4,13 @@ import Main from "../Main/Main";
 import SignInModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 
-function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveArticle }) {
+function HomePage({
+  articles,
+  setArticles,
+  onSaveArticle,
+  isArticleSaved,
+  onRemoveArticle,
+}) {
   const [user, setUser] = useState(null);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -21,7 +27,7 @@ function HomePage({ articles, setArticles, onSaveArticle, isArticleSaved, onRemo
 
   const handleSignIn = (loginData) => {
     // Simulate login and set user
-    setUser({ name: loginData.email.split('@')[0], email: loginData.email });
+    setUser({ name: loginData.email.split("@")[0], email: loginData.email });
     handleCloseModal();
   };
 
