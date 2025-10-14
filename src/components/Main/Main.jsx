@@ -51,30 +51,23 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
 
   return (
     <main className="main">
-      {/* Always show home page and about section */}
-      <>
-        <section className="search-section">
-          <div className="search-section__content">
-            <h1 className="search-section__title">
-              What's going on in
-                <br />
-                the world?
-              </h1>
-              <p className="search-section__subtitle">
-                Find the latest news on any topic and save them in your personal
-                account
-              </p>
-              <SearchForm onSearch={handleSearch} />
-            </div>
-          </section>
-
-          {/* About Component */}
-          <About />
-        </>
-      
+      <section className="search-section">
+        <div className="search-section__content">
+          <h1 className="search-section__title">
+            What's going on in
+            <br />
+            the world?
+          </h1>
+          <p className="search-section__subtitle">
+            Find the latest news on any topic and save them in your personal
+            account
+          </p>
+          <SearchForm onSearch={handleSearch} />
+        </div>
+      </section>
 
       {/* Show search results section only when user is logged in or has searched */}
-  {(effectiveLoggedIn || hasSearched) && (
+      {(effectiveLoggedIn || hasSearched) && (
         <section className="results-section">
           <div className="results-section__content">
             {/* Show preloader during search */}
@@ -130,6 +123,9 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
           </div>
         </section>
       )}
+
+      {/* About Component */}
+      <About />
 
       {/* Footer always shows */}
       <Footer />
