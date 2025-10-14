@@ -1,5 +1,6 @@
 import React from "react";
 import "./SavedNewsHeader.css";
+import logoutIcon from "../../assets/logout.svg";
 
 function SavedNewsHeader({ userName = "Elise", savedCount = 5 }) {
   return (
@@ -7,8 +8,13 @@ function SavedNewsHeader({ userName = "Elise", savedCount = 5 }) {
       <div className="saved-news-header__content">
         <p className="saved-news-header__greeting">Saved articles</p>
         <h1 className="saved-news-header__title">
-          {userName}, you have {savedCount} saved{" "}
-          {savedCount === 1 ? "article" : "articles"}
+          {userName}, you have {savedCount} saved {savedCount === 1 ? "article" : "articles"}
+          <img
+            src={logoutIcon}
+            alt="logout"
+            className="saved-news-header__logout-icon"
+            style={{ marginLeft: "12px", verticalAlign: "middle", height: "24px" }}
+          />
         </h1>
         <div className="saved-news-header__keywords">
           <span className="saved-news-header__keywords-label">

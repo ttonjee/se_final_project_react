@@ -110,8 +110,10 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .header {
+    min-width: 320px;
+    min-height: 56px;
     padding: 16px 16px;
   }
 
@@ -122,8 +124,9 @@
 
   .header__content {
     flex-direction: column;
-    gap: 20px;
     text-align: center;
+    width: 320px;
+    height: 536px;
   }
 
   .header__title {
@@ -133,5 +136,22 @@
   .header__logo {
     width: 32px;
     height: 32px;
+  }
+
+  .header__button {
+    display: none;
+  }
+  .header__link-title {
+    display: none;
+  }
+
+  .header__menu-icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    margin-left: auto;
   }
 }

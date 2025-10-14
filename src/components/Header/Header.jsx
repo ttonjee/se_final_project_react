@@ -1,8 +1,10 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import vectorIcon from "../../assets/vector-stroke.svg";
+import menuIcon from "../../assets/menu.svg";
+import logoutIcon from "../../assets/logout.svg";
 
-function Header({ onSignInClick, user, showUsernameOnly }) {
+function Header({ onSignInClick, user, onLogout }) {
   const location = useLocation();
   const isSavedPage = location.pathname === "/saved-news";
 
@@ -18,11 +20,14 @@ function Header({ onSignInClick, user, showUsernameOnly }) {
             isSavedPage ? " header__title--saved" : ""
           }`}
         >
-          NewsExplore
+          NewsExplorer
         </h1>
         <nav
           className={`header__nav${isSavedPage ? " header__nav--saved" : ""}`}
         >
+          <span className="header__menu-icon">
+            <img src={menuIcon} alt="menu" />
+          </span>
           <Link
             to="/"
             className={`header__link-title${
@@ -46,24 +51,31 @@ function Header({ onSignInClick, user, showUsernameOnly }) {
               Saved Articles
             </Link>
           )}
-          {showUsernameOnly && user ? (
-            <span
-              className={`header__button${
-                isSavedPage ? " header__button--saved" : ""
-              }`}
-            >
-              {user.name}
-            </span>
-          ) : (
-            <button
-              className={`header__button${
-                isSavedPage ? " header__button--saved" : ""
-              }`}
-              onClick={onSignInClick}
-            >
-              {user ? user.name : "Sign in"}
-            </button>
-          )}
+
+          <button
+            className={`header__button${
+              isSavedPage ? " header__button--saved" : ""
+            }`}
+            onClick={user ? onLogout : onSignInClick}
+          >
+            {user ? (
+              <>
+                {user.name}
+                <img
+                  src={logoutIcon}
+                  alt="logout"
+                  style={{
+                    marginLeft: "8px",
+                    height: "20px",
+                    verticalAlign: "middle",
+                    filter: isSavedPage ? undefined : "brightness(0) invert(1)",
+                  }}
+                />
+              </>
+            ) : (
+              "Sign in"
+            )}
+          </button>
         </nav>
       </div>
     </header>

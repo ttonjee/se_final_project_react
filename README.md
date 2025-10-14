@@ -4,12 +4,12 @@ A React application for searching and saving news articles using the NewsAPI.
 
 ## 🌐 Live Demo
 
-**Deployed Application:** [https://your-app-name.netlify.app](https://your-app-name.netlify.app)
+**Deployed Application:** [https://ttonjee.github.io/se_final_project_react](https://ttonjee.github.io/se_final_project_react)
 
 ## Features
 
 - 🔍 Search news articles by keyword
-- 📱 Responsive design for all devices  
+- 📱 Responsive design for all devices
 - 🔐 User authentication (login/register modals)
 - 💾 Save/remove articles functionality
 - ⚡ Real-time form validation
@@ -27,6 +27,7 @@ A React application for searching and saving news articles using the NewsAPI.
 ## Quick Start
 
 ### Prerequisites
+
 - Node.js (v16 or higher)
 - npm or yarn
 - NewsAPI key from [newsapi.org](https://newsapi.org/register)
@@ -34,6 +35,7 @@ A React application for searching and saving news articles using the NewsAPI.
 ### Local Development
 
 1. **Clone and install dependencies:**
+
    ```bash
    git clone https://github.com/ttonjee/se_final_project_react.git
    cd se_final_project_react
@@ -41,18 +43,23 @@ A React application for searching and saving news articles using the NewsAPI.
    ```
 
 2. **Set up environment variables:**
+
    ```bash
    cp .env.example .env
    ```
+
    Edit `.env` and add your NewsAPI key:
+
    ```
    VITE_NEWS_API_KEY=your_actual_api_key_here
    ```
 
 3. **Start development server:**
+
    ```bash
    npm run dev
    ```
+
    Open [http://localhost:3000](http://localhost:3000)
 
 4. **Build for production:**
@@ -63,6 +70,7 @@ A React application for searching and saving news articles using the NewsAPI.
 ## API Integration
 
 The app integrates with NewsAPI for fetching articles:
+
 - **Search endpoint**: `/v2/everything`
 - **Form validation**: Shows "Please enter a keyword" for empty searches
 - **Error handling**: Handles network errors, rate limits, invalid API keys
@@ -96,24 +104,28 @@ src/
 ## Key Features Implementation
 
 ### 🔍 News Search
+
 - Real-time search with NewsAPI
 - Form validation and error handling
 - Pagination with "Show more" functionality
 - Date range filtering (last 7 days)
 
 ### 👤 About Section
+
 - Author information display
 - Custom SVG placeholder with smiling face
 - Responsive design for all screen sizes
 - Clean typography and spacing
 
 ### 📱 Responsive Design
+
 - Mobile-first approach
 - Breakpoints at 768px and 1024px
 - Flexible grid layouts
 - Touch-friendly interface
 
 ### 🎨 Modern UI
+
 - BEM CSS methodology
 - Custom fonts (Roboto, Roboto Slab)
 - Smooth hover effects and transitions
@@ -124,11 +136,13 @@ src/
 ### Netlify Deployment
 
 1. **Build the project:**
+
    ```bash
    npm run build
    ```
 
 2. **Deploy to Netlify:**
+
    - Connect your GitHub repository to Netlify
    - Set build command: `npm run build`
    - Set publish directory: `dist`
@@ -141,11 +155,13 @@ src/
 ### Vercel Deployment
 
 1. **Install Vercel CLI:**
+
    ```bash
    npm i -g vercel
    ```
 
 2. **Deploy:**
+
    ```bash
    vercel --prod
    ```
@@ -157,9 +173,9 @@ src/
 
 ## Environment Variables
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `VITE_NEWS_API_KEY` | NewsAPI key from newsapi.org | Yes |
+| Variable            | Description                  | Required |
+| ------------------- | ---------------------------- | -------- |
+| `VITE_NEWS_API_KEY` | NewsAPI key from newsapi.org | Yes      |
 
 ## Browser Support
 

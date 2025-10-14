@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../HomePage/HomePage";
 import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
-import LoginModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import "./App.css";
 import SignInModal from "../SignInModal/SignInModal";
@@ -16,6 +15,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Sync isLoggedIn with user state
+  useEffect(() => {
+    setIsLoggedIn(!!user);
+  }, [user]);
 
   // Open Sign In Modal
   const handleSignInClick = () => {
@@ -112,6 +117,8 @@ function App() {
               isArticleSaved={isArticleSaved}
               onRemoveArticle={handleRemoveArticle}
               onSignInClick={handleSignInClick}
+              user={user}
+              setUser={setUser}
             />
           }
         />

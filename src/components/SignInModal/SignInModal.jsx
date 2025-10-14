@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -63,7 +61,9 @@ function SignInModal({ isOpen, onClose, onSignIn, onSwitchToRegister }) {
           required
         />
         {errors.email && (
-          <span className="modal__error" style={{ color: 'red' }}>{errors.email}</span>
+          <span className="modal__error" style={{ color: "red" }}>
+            {errors.email}
+          </span>
         )}
       </label>
 
@@ -78,7 +78,9 @@ function SignInModal({ isOpen, onClose, onSignIn, onSwitchToRegister }) {
           placeholder="Enter password"
           required
         />
-        {errors.password && <span className="modal__error">{errors.password}</span>}
+        {errors.password && (
+          <span className="modal__error">{errors.password}</span>
+        )}
       </label>
     </ModalWithForm>
   );

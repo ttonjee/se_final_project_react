@@ -10,8 +10,9 @@ function HomePage({
   onSaveArticle,
   isArticleSaved,
   onRemoveArticle,
+  user,
+  setUser,
 }) {
-  const [user, setUser] = useState(null);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
