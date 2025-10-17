@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../HomePage/HomePage";
 import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
@@ -16,7 +16,7 @@ function App() {
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { useEffect } = React;
+  // ...existing code...
 
   // Sync isLoggedIn with user state
   useEffect(() => {
