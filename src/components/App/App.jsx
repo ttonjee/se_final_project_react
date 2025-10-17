@@ -16,6 +16,7 @@ function App() {
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { useEffect } = React;
 
   // Sync isLoggedIn with user state
   useEffect(() => {
