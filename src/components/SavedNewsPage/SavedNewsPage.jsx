@@ -5,7 +5,12 @@ import Footer from "../Footer/Footer";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SignInModal from "../SignInModal/SignInModal";
 
-function SavedNewsPage({ savedArticles = [], onRemoveArticle, user }) {
+function SavedNewsPage({
+  savedArticles = [],
+  onRemoveArticle,
+  user,
+  onLogout,
+}) {
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
@@ -45,6 +50,7 @@ function SavedNewsPage({ savedArticles = [], onRemoveArticle, user }) {
       <Header
         onSignInClick={handleSignInClick}
         user={user}
+        onLogout={onLogout}
         showUsernameOnly={true}
         style={{ backgroundColor: "#fff", color: "#000" }}
       />
@@ -57,7 +63,7 @@ function SavedNewsPage({ savedArticles = [], onRemoveArticle, user }) {
       <SignInModal
         isOpen={isSignInModalOpen}
         onClose={handleCloseModal}
-        onLogin={handleLogin}
+        onSignIn={handleLogin}
         onSwitchToRegister={handleSwitchToRegister}
       />
       <RegisterModal

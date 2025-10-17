@@ -16,6 +16,7 @@ function App() {
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   // ...existing code...
 
   // Sync isLoggedIn with user state
@@ -56,6 +57,13 @@ function App() {
   const handleRegister = (registerData) => {
     console.log("Register Data:", registerData);
     handleCloseModal();
+  };
+
+  // Handle logout logic
+  const handleLogout = () => {
+    console.log("handleLogout called");
+    setUser(null);
+    setIsLoggedIn(false);
   };
 
   const handleSearch = async (query) => {
@@ -120,6 +128,7 @@ function App() {
               onSignInClick={handleSignInClick}
               user={user}
               setUser={setUser}
+              onLogout={handleLogout}
             />
           }
         />
@@ -131,6 +140,7 @@ function App() {
               onRemoveArticle={handleRemoveArticle}
               onSignInClick={handleSignInClick}
               user={user}
+              onLogout={handleLogout}
             />
           }
         />

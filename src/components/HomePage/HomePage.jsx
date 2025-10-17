@@ -12,6 +12,7 @@ function HomePage({
   onRemoveArticle,
   user,
   setUser,
+  onLogout,
 }) {
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -49,7 +50,7 @@ function HomePage({
 
   return (
     <div>
-      <Header onSignInClick={handleSignInClick} user={user} />
+  <Header onSignInClick={handleSignInClick} user={user} onLogout={onLogout} />
       <Main
         articles={articles}
         setArticles={setArticles}

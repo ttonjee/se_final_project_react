@@ -56,14 +56,17 @@
   background-color: #1d5dcd;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .search-form__field {
     flex-direction: column;
     border-radius: 8px;
   }
 
-  .search-form__input,
+  .seach-section__content {
+    display: flex;
+  }
   .search-form__button {
     padding: 14px 20px;
+    width: 288px;
   }
 }

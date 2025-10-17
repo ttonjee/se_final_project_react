@@ -8,7 +8,7 @@ import { searchNews } from "../../utils/newsApi";
 import "./Main.css";
 import searchFieldPng from "../../assets/search-field.png";
 
-function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveArticle, isLoggedIn }) {
+function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveArticle, isLoggedIn,  }) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [error, setError] = useState(null);
@@ -24,6 +24,8 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
     setSearchQuery(query);
     setHasSearched(true);
     setVisibleArticles(3); // Reset to show 3 initially
+
+    
 
     try {
       const response = await searchNews(query);

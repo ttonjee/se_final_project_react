@@ -5,6 +5,7 @@ import menuIcon from "../../assets/menu.svg";
 import logoutIcon from "../../assets/logout.svg";
 
 function Header({ onSignInClick, user, onLogout }) {
+  console.log('Header mounted. onLogout:', onLogout);
   const location = useLocation();
   const isSavedPage = location.pathname === "/saved-news";
 
@@ -64,10 +65,15 @@ function Header({ onSignInClick, user, onLogout }) {
                 <img
                   src={logoutIcon}
                   alt="logout"
+                  onClick={() => {
+                    console.log('Logout icon clicked');
+                    if (onLogout) onLogout();
+                  }}
                   style={{
                     marginLeft: "8px",
                     height: "20px",
                     verticalAlign: "middle",
+                    cursor: "pointer", // <-- makes it look clickable
                     filter: isSavedPage ? undefined : "brightness(0) invert(1)",
                   }}
                 />
