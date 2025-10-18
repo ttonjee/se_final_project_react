@@ -36,7 +36,7 @@
 .header__container--saved .header__link-title--saved {
   color: #1a1b22 !important;
 }
-.header__button.header__nav--saved,
+.header__container--saved .header__button,
 .header__button--saved {
   color: #1a1b22 !important;
   border-color: rgba(26, 27, 34, 0.5);
@@ -107,6 +107,15 @@
   display: none;
 }
 in {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
