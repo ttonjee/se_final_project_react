@@ -32,6 +32,12 @@
   box-shadow: 0px -1px 0px 0px rgba(209, 210, 214, 1) inset;
 }
 
+/* Use per-link underlines positioned on the header container line for saved mode */
+.header__container--saved {
+  /* keep positioned so child pseudo-elements can be absolute if needed */
+  position: relative;
+}
+
 .header__container--saved .header__link-title,
 .header__container--saved .header__link-title--saved {
   color: #1a1b22 !important;
@@ -44,6 +50,39 @@
 
 .header__container--saved .header__title--saved {
   color: rgba(26, 27, 34, 1) !important;
+}
+
+/* When header is in saved mode, make link titles use inline-block so
+   the underline can match the text width, and ensure underline is black */
+.header__container--saved .header__link-title,
+.header__container--saved .header__link-title--saved {
+  display: inline-block;
+  position: relative;
+}
+
+.header__container--saved .header__link-title .header__underline,
+.header__container--saved .header__link-title--saved .header__underline {
+  /* hide the SVG image in saved mode to avoid white stroke overlay */
+  display: none;
+}
+
+/* draw a single black underline using a pseudo-element for saved-mode links */
+.header__container--saved .header__link-title::after,
+.header__container--saved .header__link-title--saved::after {
+  content: "";
+  position: absolute; /* position relative to the link */
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #1a1b22;
+  top: 26px; /* align with previous header underline position */
+  visibility: hidden;
+  position: absolute;
+  top: 48px;
+}
+
+.header__container--saved .header__link-title--active::after {
+  visibility: visible;
 }
 
 .header__content {
@@ -74,6 +113,15 @@
   flex-direction: column;
 }
 
+.header__link-title--active .header__underline {
+  background: #1a1b22 !important;
+  visibility: visible;
+}
+
+.header__underline {
+  visibility: hidden;
+}
+
 .header__underline {
   width: 68px;
   height: 3px;
@@ -101,18 +149,8 @@
   padding: 12px;
 }
 
-@keyframes sp
-
 .header__menu-icon {
   display: none;
-}
-in {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 @keyframes spin {

@@ -10,22 +10,22 @@
   padding: 0 104px;
 }
 
-.saved-news-header__greeting {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: rgba(26, 27, 34, 0.5);
-  margin: 40px 0 0 0;
-}
-
 .saved-news-header__title {
   font-family: "Roboto Slab", serif;
   font-weight: 400;
-  font-size: 40px;
+  font-size: 18px;
   line-height: 46px;
   color: rgba(26, 27, 34, 1);
   width: 530px;
   margin: 28px 0 30px 0;
+}
+
+.saved-news-header__subtitle {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  color: rgba(26, 27, 34, 0.6);
+  margin: 8px 0 0 0;
 }
 
 .saved-news-header__keywords {
@@ -58,6 +58,9 @@
   content: ",";
   margin-left: 2px;
 }
+
+/* Ensure the underline image added under the greeting is visible and sized */
+/* no inline underline image — use pseudo-element above */
 
 @media (max-width: 768px) {
   .saved-news-header {

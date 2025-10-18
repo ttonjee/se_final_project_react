@@ -15,21 +15,11 @@ function SavedNewsHeader({ userName = "Elise", savedCount = 5 }) {
         >
           Home
         </Link>
-        <p className="saved-news-header__greeting">Saved articles</p>
-        <h1 className="saved-news-header__title">
-          {userName}, you have {savedCount} saved{" "}
-          {savedCount === 1 ? "article" : "articles"}
-          <img
-            src={logoutIcon}
-            alt="logout"
-            className="saved-news-header__logout-icon"
-            style={{
-              marginLeft: "12px",
-              verticalAlign: "middle",
-              height: "24px",
-            }}
-          />
-        </h1>
+
+        <h1 className="saved-news-header__title">Saved articles</h1>
+        <p className="saved-news-header__subtitle">
+          {userName}, you have {savedCount} saved {savedCount === 1 ? "article" : "articles"}
+        </p>
         <div className="saved-news-header__keywords">
           <span className="saved-news-header__keywords-label">
             By keywords:

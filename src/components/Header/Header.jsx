@@ -1,11 +1,11 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import vectorIcon from "../../assets/vector-stroke.svg";
 import menuIcon from "../../assets/menu.svg";
 import logoutIcon from "../../assets/logout.svg";
 
 function Header({ onSignInClick, user, onLogout }) {
-  console.log('Header mounted. onLogout:', onLogout);
+  console.log("Header mounted. onLogout:", onLogout);
   const location = useLocation();
   const isSavedPage = location.pathname === "/saved-news";
 
@@ -29,11 +29,13 @@ function Header({ onSignInClick, user, onLogout }) {
           <span className="header__menu-icon">
             <img src={menuIcon} alt="menu" />
           </span>
-          <Link
+          <NavLink
             to="/"
-            className={`header__link-title${
-              isSavedPage ? " header__link-title--saved" : ""
-            }`}
+            className={({ isActive }) =>
+              `header__link-title${
+                isSavedPage ? " header__link-title--saved" : ""
+              }${isActive ? " header__link-title--active" : ""}`
+            }
           >
             Home
             <img
@@ -41,16 +43,23 @@ function Header({ onSignInClick, user, onLogout }) {
               alt="vector icon"
               className="header__underline"
             />
-          </Link>
+          </NavLink>
           {user && (
-            <Link
+            <NavLink
               to="/saved-news"
-              className={`header__link-title${
-                isSavedPage ? " header__link-title--saved" : ""
-              }`}
+              className={({ isActive }) =>
+                `header__link-title${
+                  isSavedPage ? " header__link-title--saved" : ""
+                }${isActive ? " header__link-title--active" : ""}`
+              }
             >
               Saved Articles
-            </Link>
+              <img
+                src={vectorIcon}
+                alt="vector icon"
+                className="header__underline"
+              />
+            </NavLink>
           )}
 
           <button
@@ -66,7 +75,7 @@ function Header({ onSignInClick, user, onLogout }) {
                   src={logoutIcon}
                   alt="logout"
                   onClick={() => {
-                    console.log('Logout icon clicked');
+                    console.log("Logout icon clicked");
                     if (onLogout) onLogout();
                   }}
                   style={{

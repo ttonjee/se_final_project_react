@@ -12,10 +12,10 @@ function SavedArticlesList({
     return (
       <section className="saved-articles-list">
         <div className="saved-articles-list__content">
-          <div className="saved-articles-list__loading">
-            <div className="saved-articles-list__spinner"></div>
+          <article className="saved-articles-list__loading" aria-live="polite">
+            <div className="saved-articles-list__spinner" role="status" aria-hidden="true"></div>
             <p>Loading your saved articles...</p>
-          </div>
+          </article>
         </div>
       </section>
     );
@@ -25,10 +25,10 @@ function SavedArticlesList({
     return (
       <section className="saved-articles-list">
         <div className="saved-articles-list__content">
-          <div className="saved-articles-list__empty">
+          <article className="saved-articles-list__empty">
             <h3>No saved articles yet</h3>
             <p>Start saving articles from the main page to see them here!</p>
-          </div>
+          </article>
         </div>
       </section>
     );
@@ -37,18 +37,19 @@ function SavedArticlesList({
   return (
     <section className="saved-articles-list">
       <div className="saved-articles-list__content">
-        <div className="saved-articles-list__grid">
+        <ul className="saved-articles-list__grid" aria-live="polite">
           {articles.map((article, index) => (
-            <NewsCard
-              key={`${article.url}-${index}`}
-              article={article}
-              isSaved={true}
-              onRemove={onRemoveArticle}
-              showKeyword={true}
-              keyword={article.keyword || "General"}
-            />
+            <li className="saved-articles-list__item" key={`${article.url}-${index}`}>
+              <NewsCard
+                article={article}
+                isSaved={true}
+                onRemove={onRemoveArticle}
+                showKeyword={true}
+                keyword={article.keyword || "General"}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
