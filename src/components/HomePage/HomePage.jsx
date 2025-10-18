@@ -50,8 +50,8 @@ function HomePage({
   };
 
   return (
-    <div>
-  <Header onSignInClick={handleSignInClick} user={user} onLogout={onLogout} />
+    <div className="page">
+      <Header onSignInClick={handleSignInClick} user={user} onLogout={onLogout} />
       <Main
         articles={articles}
         setArticles={setArticles}
@@ -60,7 +60,7 @@ function HomePage({
         onRemoveArticle={onRemoveArticle}
         isLoggedIn={!!user}
       />
-      <Footer />
+      
       <SignInModal
         isOpen={isSignInModalOpen}
         onClose={handleCloseModal}

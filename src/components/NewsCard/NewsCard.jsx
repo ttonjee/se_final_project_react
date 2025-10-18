@@ -47,15 +47,20 @@ function NewsCard({
 
   return (
     <article className="news-card">
-      {/* {article?.urlToImage && ( */}
-      <div className="news-card__image-wrapper">
-        <img
-          className="news-card__image"
-          src={article.urlToImage}
-          alt={article.title}
-        />
-      </div>
-      {/* )} */}
+      {/* Link the image and content to the article URL and open in a new tab */}
+      <a
+        className="news-card__link"
+        href={article.url || "#"}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div className="news-card__image-wrapper">
+          <img
+            className="news-card__image"
+            src={article.urlToImage}
+            alt={article.title}
+          />
+        </div>
 
       {/* Save/Remove button with tooltip */}
       <div className="news-card__save-container">
@@ -79,7 +84,7 @@ function NewsCard({
         )}
       </div>
 
-      <div className="news-card__content">
+        <div className="news-card__content">
         {/* keyword removed */}
 
         {/* Publication date */}
@@ -93,7 +98,8 @@ function NewsCard({
 
         {/* Source name */}
         <p className="news-card__source">{article.source?.name}</p>
-      </div>
+        </div>
+      </a>
     </article>
   );
 }

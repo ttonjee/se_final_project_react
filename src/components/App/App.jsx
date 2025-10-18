@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../HomePage/HomePage";
 import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
+import Footer from "../Footer/Footer";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import "./App.css";
 import SignInModal from "../SignInModal/SignInModal";
@@ -114,7 +115,8 @@ function App() {
 
   return (
     <div className="app">
-      <Routes>
+      <div className="app__content">
+        <Routes>
         {/* DEBUG: Current route will render below. If you only see Saved Articles, check your browser address bar. */}
         <Route
           path="/"
@@ -144,9 +146,10 @@ function App() {
             />
           }
         />
-      </Routes>
+        </Routes>
+      </div>
 
-      {/* Modals rendered outside Routes to be always available */}
+  {/* Modals rendered outside Routes to be always available */}
       <SignInModal
         isOpen={isSignInModalOpen}
         onClose={handleCloseModal}
@@ -159,6 +162,7 @@ function App() {
         onRegister={handleRegister}
         onSwitchToLogin={handleSwitchToLogin}
       />
+      <Footer />
     </div>
   );
 }

@@ -136,7 +136,9 @@
     padding: 40px 0;
   }
 
-  .results-section__cards {
-    grid-template-columns: 1fr;
+  /* On tablet (<=768px) show 3 cards per row to match Figma */
+  .main__cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 }

@@ -186,8 +186,26 @@
 }
 
 @media (max-width: 768px) {
+  .modal {
+    align-items: flex-start; /* place modal nearer top so close button is visible */
+    padding-top: 24px;
+  }
+
   .modal__container {
     max-width: 90vw;
     padding: 24px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto; /* allow scroll if content is taller than viewport */
+  }
+
+  /* Ensure close button is visible inside the modal on small screens */
+  .modal__close-button {
+    top: 12px;
+    right: 12px;
+    background: rgba(255,255,255,1);
+    border-radius: 50%;
+    padding: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    z-index: 1000;
   }
 }

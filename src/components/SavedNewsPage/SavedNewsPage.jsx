@@ -46,7 +46,7 @@ function SavedNewsPage({
   };
 
   return (
-    <div>
+    <div className="page">
       <Header
         onSignInClick={handleSignInClick}
         user={user}
@@ -59,7 +59,7 @@ function SavedNewsPage({
         onRemoveArticle={onRemoveArticle}
         user={user}
       />
-      <Footer />
+      
       <SignInModal
         isOpen={isSignInModalOpen}
         onClose={handleCloseModal}

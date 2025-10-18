@@ -1,1 +1,13 @@
 @import url("./vendor/fonts/fonts.css");
+
+/* Ensure the page fills the viewport and remove default body margin */
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+#root {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}

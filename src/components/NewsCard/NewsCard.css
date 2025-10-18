@@ -118,6 +118,13 @@
   overflow: hidden;
 }
 
+/* make the whole image+content area clickable without affecting save button */
+.news-card__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 .news-card__date {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
