@@ -10,7 +10,7 @@ function Footer() {
         <p className="footer__text">
           © 2024 Supersite, Powered by News API
         </p>
-        <div className="footer__links">
+        <nav className="footer__links" aria-label="Footer navigation">
           <a href="/" className="footer__link">Home</a>
           <a href="https://tripleten.com" className="footer__link" target="_blank" rel="noopener noreferrer">
             TripleTen
@@ -21,7 +21,7 @@ function Footer() {
           <a href="https://linkedin.com" className="footer__link footer__link--linkedin" target="_blank" rel="noopener noreferrer">
             <img src={linkedinIcon} alt="LinkedIn" className="footer__linkedin-icon" />
           </a>
-        </div>
+        </nav>
       </div>
     </footer>
   );

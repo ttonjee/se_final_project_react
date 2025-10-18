@@ -3,7 +3,6 @@ import SearchForm from "../SearchForm/SearchForm";
 import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
-import Footer from "../Footer/Footer";
 import { searchNews } from "../../utils/newsApi";
 import "./Main.css";
 import searchFieldPng from "../../assets/search-field.png";
@@ -129,8 +128,7 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
       {/* About Component */}
       <About />
 
-      {/* Footer always shows */}
-      <Footer />
+      {/* Footer moved out to page-level so it is not inside <main> */}
     </main>
   );
 }

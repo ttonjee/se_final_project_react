@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import SignInModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import Footer from "../Footer/Footer";
 
 function HomePage({
   articles,
@@ -59,6 +60,7 @@ function HomePage({
         onRemoveArticle={onRemoveArticle}
         isLoggedIn={!!user}
       />
+      <Footer />
       <SignInModal
         isOpen={isSignInModalOpen}
         onClose={handleCloseModal}
