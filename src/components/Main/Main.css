@@ -7,7 +7,8 @@
   padding: 0;
 }
 .main {
-  max-height: 100vh;
+  /* allow main to grow so footer is pushed to bottom */
+  flex: 1 0 auto;
   max-width: 1440px;
 }
 
