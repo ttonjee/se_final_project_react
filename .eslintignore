@@ -1,0 +1,6 @@
+dist/
+node_modules/
+hello-vite/
+*.config.js
+*.min.js
+build/

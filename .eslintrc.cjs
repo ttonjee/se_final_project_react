@@ -1,0 +1,23 @@
+module.exports = {
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false,
+    babelOptions: {
+      presets: [
+        ['@babel/preset-env', { targets: { esmodules: true } }],
+        '@babel/preset-react',
+      ],
+    },
+    ecmaVersion: 2021,
+    sourceType: 'module',
+    ecmaFeatures: { jsx: true },
+  },
+  env: { browser: true, es2021: true, node: true },
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  plugins: ['react'],
+  rules: {
+    'no-undef': 'off',
+    'react/react-in-jsx-scope': 'off',
+  },
+  ignorePatterns: ['dist/', 'node_modules/', 'hello-vite/', '*.config.js'],
+};

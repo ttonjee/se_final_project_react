@@ -1,7 +1,6 @@
 import React from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import "./SavedArticlesList.css";
-import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 
 function SavedArticlesList({
   articles = [],

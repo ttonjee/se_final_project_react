@@ -1,13 +1,28 @@
 @import url("./vendor/fonts/fonts.css");
 
 /* Ensure the page fills the viewport and remove default body margin */
-html, body {
-	height: 100%;
-	margin: 0;
+html,
+body {
+  height: 100%;
+  margin: 0;
 }
 
 #root {
-	min-height: 100%;
-	display: flex;
-	flex-direction: column;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Utility: visually hide scrollbars but keep scrolling functional */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* DEBUG: outline every element to identify overflow sources. Remove this rule after debugging. */
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.6) !important;
 }

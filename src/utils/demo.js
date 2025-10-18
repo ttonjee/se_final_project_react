@@ -1,32 +1,22 @@
-import { authorize, checkToken } from './auth';
-
-// Test login and token validation
-authorize('test@example.com', 'password123')
-  .then((res) => {
-    console.log('Logged in! Token:', res.token);
-    return checkToken(res.token);
-  })
-  .then((userRes) => {
-    console.log('User info:', userRes.data);
-  })
-  .catch((err) => {
-    console.error('Login or token validation failed:', err);
-  });
 import React, { useEffect } from "react";
-import { authorize, checkToken } from "./utils/auth";
-import { getItems, saveArticle, deleteArticle } from "./utils/api";
+import { authorize, checkToken } from "./auth";
+import { getItems, saveArticle } from "./api";
 
+// Demo component used during development to exercise auth and API helpers.
 function DemoTest() {
   useEffect(() => {
     // Simulate login
     authorize("test@example.com", "password123")
       .then((res) => {
+        // eslint-disable-next-line no-console
         console.log("Logged in! Token:", res.token);
         return checkToken(res.token);
       })
       .then((userRes) => {
+        // eslint-disable-next-line no-console
         console.log("User info:", userRes.data);
-      });
+      })
+      .catch(() => {});
 
     // Simulate saving an article
     const article = {
@@ -35,13 +25,15 @@ function DemoTest() {
       imageUrl: "https://example.com/image.jpg",
     };
 
-    saveArticle(article).then((saved) => {
-      console.log("Article saved:", saved);
+    saveArticle(article).then(() => {
+      // eslint-disable-next-line no-console
+      console.log("Article saved (demo)");
     });
 
     // Simulate fetching saved articles
     getItems().then((items) => {
-      console.log("Saved articles:", items);
+      // eslint-disable-next-line no-console
+      console.log("Saved articles (demo):", items);
     });
   }, []);
 

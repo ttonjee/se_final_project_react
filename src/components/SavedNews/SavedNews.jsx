@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import SavedArticlesList from "../SavedArticlesList/SavedArticlesList";
 import "./SavedNews.css";

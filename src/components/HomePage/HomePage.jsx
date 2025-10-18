@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import SignInModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import Footer from "../Footer/Footer";
+// Footer import removed as it is unused
 
 function HomePage({
   articles,

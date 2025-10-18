@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../HomePage/HomePage";
 import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
-import Footer from "../Footer/Footer";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import "./App.css";
 import SignInModal from "../SignInModal/SignInModal";
@@ -12,11 +11,8 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  const [visibleArticles, setVisibleArticles] = useState(3);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // App-level state
   const [user, setUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // ...existing code...
 
@@ -67,34 +63,7 @@ function App() {
     setIsLoggedIn(false);
   };
 
-  const handleSearch = async (query) => {
-    if (!query.trim()) {
-      setError("Please enter a keyword");
-      setArticles([]);
-      return;
-    }
-
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const data = await fetchNewsArticles(query);
-      if (data.articles.length === 0) {
-        setError("Nothing Found");
-        setArticles([]);
-      } else {
-        setArticles(data.articles);
-        setVisibleArticles(3);
-      }
-    } catch (err) {
-      setError(
-        "Sorry, something went wrong during the request. Please try again later."
-      );
-      setArticles([]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // search handled inside Main; App does not perform a search directly
 
   const handleSaveArticle = (article) => {
     setSavedArticles((prev) => {

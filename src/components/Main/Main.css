@@ -143,3 +143,13 @@
     gap: 16px;
   }
 }
+
+@media (max-width: 480px) {
+  .results-section__content {
+    padding: 24px 16px; /* reduce padding to prevent horizontal overflow */
+  }
+
+  .main__cards-grid {
+    grid-template-columns: 1fr; /* single column for small screens */
+  }
+}

@@ -5,7 +5,6 @@ import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
 import { searchNews } from "../../utils/newsApi";
 import "./Main.css";
-import searchFieldPng from "../../assets/search-field.png";
 
 function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveArticle, isLoggedIn,  }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +13,7 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleArticles, setVisibleArticles] = useState(3); // Show 3 initially per requirements
   // Temporary state to simulate login if prop is not provided
-  const [localLoggedIn, setLocalLoggedIn] = useState(false);
+  const [localLoggedIn] = useState(false);
   const effectiveLoggedIn = typeof isLoggedIn === "boolean" ? isLoggedIn : localLoggedIn;
 
   const handleSearch = async (query) => {
@@ -39,9 +38,7 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
     }
   };
 
-  const handleSaveArticle = (article) => {
-    onSaveArticle(article);
-  };
+  // Use onSaveArticle prop directly where needed; wrapper removed to satisfy linter.
 
   const handleShowMore = () => {
     setVisibleArticles((prev) => Math.min(prev + 3, articles.length)); // Show 3 more cards

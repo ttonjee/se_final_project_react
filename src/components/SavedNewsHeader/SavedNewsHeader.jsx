@@ -1,8 +1,5 @@
 import React from "react";
 import "./SavedNewsHeader.css";
-import logoutIcon from "../../assets/logout.svg";
-import { Link } from "react-router-dom";
-import vectorIcon from "../../assets/vector-stroke.svg";
 
 function SavedNewsHeader({ userName = "Elise", savedCount = 5 }) {
   return (
