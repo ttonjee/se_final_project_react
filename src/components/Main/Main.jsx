@@ -6,15 +6,22 @@ import About from "../About/About";
 import { searchNews } from "../../utils/newsApi";
 import "./Main.css";
 
-function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveArticle, isLoggedIn,  }) {
+function Main({
+  articles,
+  setArticles,
+  onSaveArticle,
+  isArticleSaved,
+  onRemoveArticle,
+  isLoggedIn,
+  onSearch,
+}) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleArticles, setVisibleArticles] = useState(3); // Show 3 initially per requirements
-  // Temporary state to simulate login if prop is not provided
-  const [localLoggedIn] = useState(false);
-  const effectiveLoggedIn = typeof isLoggedIn === "boolean" ? isLoggedIn : localLoggedIn;
+  // If no isLoggedIn prop is provided, default to false for demo purposes
+  const effectiveLoggedIn = !!isLoggedIn;
 
   const handleSearch = async (query) => {
     setIsLoading(true);
@@ -22,8 +29,6 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
     setSearchQuery(query);
     setHasSearched(true);
     setVisibleArticles(3); // Reset to show 3 initially
-
-    
 
     try {
       const response = await searchNews(query);
@@ -37,8 +42,6 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
       setIsLoading(false);
     }
   };
-
-  // Use onSaveArticle prop directly where needed; wrapper removed to satisfy linter.
 
   const handleShowMore = () => {
     setVisibleArticles((prev) => Math.min(prev + 3, articles.length)); // Show 3 more cards
@@ -60,7 +63,7 @@ function Main({ articles, setArticles, onSaveArticle, isArticleSaved, onRemoveAr
             Find the latest news on any topic and save them in your personal
             account
           </p>
-          <SearchForm onSearch={handleSearch} />
+          <SearchForm onSearch={onSearch || handleSearch} />
         </div>
       </section>
 

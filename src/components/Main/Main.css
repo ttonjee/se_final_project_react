@@ -137,10 +137,18 @@
     padding: 40px 0;
   }
 
-  /* On tablet (<=768px) show 3 cards per row to match Figma */
+  /* On tablet (<=768px) show 3 cards per row to match Figma.
+     Use minmax(0, 1fr) so columns can shrink without overflowing and
+     reduce horizontal padding so three cards fit comfortably. */
+  .results-section__content {
+    padding: 40px 24px;
+  }
+
   .main__cards-grid {
-    grid-template-columns: repeat(3, 1fr);
+    /* three equal columns that can shrink below intrinsic min width */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
+    margin-bottom: 32px;
   }
 }
 

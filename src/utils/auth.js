@@ -22,6 +22,7 @@ export const checkToken = (token) => {
         },
       });
     } else {
+      console.log("this is a bug");
       reject("Invalid token");
     }
   });
