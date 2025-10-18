@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../HomePage/HomePage";
 import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import Footer from "../Footer/Footer";
 import "./App.css";
 import SignInModal from "../SignInModal/SignInModal";
 
@@ -11,15 +12,11 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  // App-level state
   const [user, setUser] = useState(null);
 
   // ...existing code...
 
-  // Sync isLoggedIn with user state
-  useEffect(() => {
-    setIsLoggedIn(!!user);
-  }, [user]);
+  // User login state is derived from `user` when needed.
 
   // Open Sign In Modal
   const handleSignInClick = () => {
@@ -60,10 +57,9 @@ function App() {
   const handleLogout = () => {
     console.log("handleLogout called");
     setUser(null);
-    setIsLoggedIn(false);
   };
 
-  // search handled inside Main; App does not perform a search directly
+  // Search is handled inside Main; App does not perform searches directly.
 
   const handleSaveArticle = (article) => {
     setSavedArticles((prev) => {
@@ -86,39 +82,39 @@ function App() {
     <div className="app">
       <div className="app__content">
         <Routes>
-        {/* DEBUG: Current route will render below. If you only see Saved Articles, check your browser address bar. */}
-        <Route
-          path="/"
-          element={
-            <HomePage
-              articles={articles}
-              setArticles={setArticles}
-              onSaveArticle={handleSaveArticle}
-              isArticleSaved={isArticleSaved}
-              onRemoveArticle={handleRemoveArticle}
-              onSignInClick={handleSignInClick}
-              user={user}
-              setUser={setUser}
-              onLogout={handleLogout}
-            />
-          }
-        />
-        <Route
-          path="/saved-news"
-          element={
-            <SavedNewsPage
-              savedArticles={savedArticles}
-              onRemoveArticle={handleRemoveArticle}
-              onSignInClick={handleSignInClick}
-              user={user}
-              onLogout={handleLogout}
-            />
-          }
-        />
+          {/* DEBUG: Current route will render below. If you only see Saved Articles, check your browser address bar. */}
+          <Route
+            path="/"
+            element={
+              <HomePage
+                articles={articles}
+                setArticles={setArticles}
+                onSaveArticle={handleSaveArticle}
+                isArticleSaved={isArticleSaved}
+                onRemoveArticle={handleRemoveArticle}
+                onSignInClick={handleSignInClick}
+                user={user}
+                setUser={setUser}
+                onLogout={handleLogout}
+              />
+            }
+          />
+          <Route
+            path="/saved-news"
+            element={
+              <SavedNewsPage
+                savedArticles={savedArticles}
+                onRemoveArticle={handleRemoveArticle}
+                onSignInClick={handleSignInClick}
+                user={user}
+                onLogout={handleLogout}
+              />
+            }
+          />
         </Routes>
       </div>
 
-  {/* Modals rendered outside Routes to be always available */}
+      {/* Modals rendered outside Routes to be always available */}
       <SignInModal
         isOpen={isSignInModalOpen}
         onClose={handleCloseModal}

@@ -58,7 +58,7 @@ function SavedNewsPage({
         onRemoveArticle={onRemoveArticle}
         user={user}
       />
-      
+
       <SignInModal
         isOpen={isSignInModalOpen}
         onClose={handleCloseModal}

@@ -3,7 +3,6 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import SignInModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-// Footer import removed as it is unused
 
 function HomePage({
   articles,
@@ -51,7 +50,11 @@ function HomePage({
 
   return (
     <div className="page">
-      <Header onSignInClick={handleSignInClick} user={user} onLogout={onLogout} />
+      <Header
+        onSignInClick={handleSignInClick}
+        user={user}
+        onLogout={onLogout}
+      />
       <Main
         articles={articles}
         setArticles={setArticles}
@@ -60,7 +63,7 @@ function HomePage({
         onRemoveArticle={onRemoveArticle}
         isLoggedIn={!!user}
       />
-      
+
       <SignInModal
         isOpen={isSignInModalOpen}
         onClose={handleCloseModal}

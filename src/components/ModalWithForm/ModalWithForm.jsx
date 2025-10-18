@@ -13,6 +13,7 @@ function ModalWithForm({
   children,
   containerClassName = "",
   formClassName = "",
+  // titleClassName removed (unused)
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
