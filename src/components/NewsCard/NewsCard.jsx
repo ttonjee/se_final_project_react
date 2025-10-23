@@ -107,7 +107,7 @@ function NewsCard({
               >
                 <img
                   src={TrashIcon}
-                  alt=""
+                  alt="trash icon"
                   aria-hidden="true"
                   className="news-card__trash-icon"
                 />
