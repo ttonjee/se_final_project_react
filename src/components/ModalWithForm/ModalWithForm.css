@@ -41,12 +41,18 @@
   padding: 0;
   margin-top: 0;
 }
+
 .modal__error {
-  color: #d32f2f;
+  color: rgba(255, 0, 0, 1);
+  font-family: "Inter", sans-serif;
   font-size: 13px;
   margin-top: 4px;
   margin-bottom: 2px;
   text-align: left;
+  visibility: hidden;
+}
+.modal__error-visible {
+  visibility: visible;
 }
 .modal__input-line {
   width: 100%;
@@ -163,16 +169,17 @@
 
 .modal__close-button {
   position: absolute;
-  top: -33px;
-  right: -33px;
+  top: -45px;
+  right: -6px;
   background: transparent;
   border: none;
   cursor: pointer;
 }
 
 .modal__close-icon {
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
 }
 
 .modal__container--register {
@@ -186,26 +193,35 @@
 }
 
 @media (max-width: 768px) {
-  .modal {
-    align-items: flex-start; /* place modal nearer top so close button is visible */
-    padding-top: 24px;
+  .modal_opened .modal__container--signin {
+    background-image: url("../../assets/Keyboard.svg");
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 160px auto;
   }
-
   .modal__container {
-    max-width: 90vw;
-    padding: 24px;
-    max-height: calc(100vh - 48px);
-    overflow-y: auto; /* allow scroll if content is taller than viewport */
+    width: 430px;
   }
 
-  /* Ensure close button is visible inside the modal on small screens */
   .modal__close-button {
-    top: 12px;
-    right: 12px;
-    background: rgba(255,255,255,1);
-    border-radius: 50%;
-    padding: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    z-index: 1000;
+    background-image: transparent;
+  }
+}
+
+@media screen and (max-width: 508px) {
+  .modal__container {
+    height: 560px;
+    position: relative;
+    top: -60px;
+    right: 0;
+  }
+
+  .modal__close-button {
+    right: 15px;
+  }
+
+  .modal__close-icon {
+    width: 24px;
+    height: 24px;
   }
 }

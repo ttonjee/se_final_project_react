@@ -26,7 +26,11 @@ function Header({ onSignInClick, user, onLogout }) {
         <nav
           className={`header__nav${isSavedPage ? " header__nav--saved" : ""}`}
         >
-          <span className="header__menu-icon">
+          <span
+            className={`header__menu-icon${
+              isSavedPage ? " header__menu-icon--saved" : ""
+            }`}
+          >
             <img src={menuIcon} alt="menu" />
           </span>
           <NavLink
@@ -79,9 +83,10 @@ function Header({ onSignInClick, user, onLogout }) {
                     if (onLogout) onLogout();
                   }}
                   style={{
-                    marginLeft: "8px",
-                    height: "20px",
-                    verticalAlign: "middle",
+                    top: "15px",
+                    right: "19px",
+                    height: "16px",
+                    position: "absolute",
                     cursor: "pointer", // <-- makes it look clickable
                     filter: isSavedPage ? undefined : "brightness(0) invert(1)",
                   }}

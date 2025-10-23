@@ -13,7 +13,8 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  // start true temporarily so the preloader is visible on page load for testing
+
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
 
@@ -44,6 +45,9 @@ function App() {
       console.warn("Failed to persist demo user to localStorage:", err);
     }
   }, [user]);
+
+  // clear the temporary preloader after a short delay so the UI is visible
+  // (this is for testing — you can remove this effect when done)
 
   // ...existing code...
 
@@ -95,7 +99,6 @@ function App() {
       return;
     }
 
-    setIsLoading(true);
     setError(null);
 
     try {
@@ -113,7 +116,6 @@ function App() {
       );
       setArticles([]);
     } finally {
-      setIsLoading(false);
     }
   };
 
@@ -138,7 +140,7 @@ function App() {
     <div className="app">
       <div className="app__content">
         {/* Global preloader shown while App-level searches are running */}
-        {isLoading && <Preloader />}
+
         {/* Global error banner (uses `error` state) */}
         {error && (
           <div className="app__error" role="alert" aria-live="assertive">
@@ -183,6 +185,8 @@ function App() {
                 user={user}
                 isLoggedIn={isLoggedIn}
                 onLogout={handleLogout}
+                keywords={["Nature", "Yellowstone", "Travel", "and 2 others"]}
+                highlightKeywords={["Nature", "Yellowstone", "and 2 others"]}
               />
             }
           />
@@ -193,7 +197,7 @@ function App() {
       <SignInModal
         isOpen={isSignInModalOpen}
         onClose={handleCloseModal}
-        onLogin={handleLogin}
+        onSignIn={handleLogin}
         onSwitchToRegister={handleSwitchToRegister}
       />
       <RegisterModal

@@ -5,6 +5,7 @@ import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
 import { searchNews } from "../../utils/newsApi";
 import "./Main.css";
+import NotFound from "../../assets/not-found_v1.svg";
 
 function Main({
   articles,
@@ -18,7 +19,7 @@ function Main({
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  // searchQuery removed — Main no longer needs to track the raw query
   const [visibleArticles, setVisibleArticles] = useState(3); // Show 3 initially per requirements
   // If no isLoggedIn prop is provided, default to false for demo purposes
   const effectiveLoggedIn = !!isLoggedIn;
@@ -26,7 +27,6 @@ function Main({
   const handleSearch = async (query) => {
     setIsLoading(true);
     setError(null);
-    setSearchQuery(query);
     setHasSearched(true);
     setVisibleArticles(3); // Reset to show 3 initially
 
@@ -43,6 +43,31 @@ function Main({
     }
   };
 
+  // Wrapper used when parent provides `onSearch` so Main can maintain UI flags
+  const performSearch = async (query) => {
+    setIsLoading(true);
+    setError(null);
+    setHasSearched(true);
+    setVisibleArticles(3);
+
+    if (onSearch) {
+      try {
+        // delegate the fetch to parent; if it throws, handle locally
+        await onSearch(query);
+        // parent updates `articles` prop; Main will read it from props
+      } catch (err) {
+        setError(
+          "Sorry, something went wrong during the request. Please try again later."
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    } else {
+      // fallback to local fetch
+      await handleSearch(query);
+    }
+  };
+
   const handleShowMore = () => {
     setVisibleArticles((prev) => Math.min(prev + 3, articles.length)); // Show 3 more cards
   };
@@ -55,15 +80,13 @@ function Main({
       <section className="search-section">
         <div className="search-section__content">
           <h1 className="search-section__title">
-            What's going on in
-            <br />
-            the world?
+            What's going on in the world?
           </h1>
           <p className="search-section__subtitle">
             Find the latest news on any topic and save them in your personal
             account
           </p>
-          <SearchForm onSearch={onSearch || handleSearch} />
+          <SearchForm onSearch={performSearch} />
         </div>
       </section>
 
@@ -87,8 +110,17 @@ function Main({
             {/* Show "Nothing Found" if no articles and no error */}
             {hasSearched && !isLoading && !error && articles.length === 0 && (
               <div className="results-section__not-found">
-                <h3>Nothing found</h3>
-                <p>Sorry, but nothing matched your search terms.</p>
+                <img
+                  src={NotFound}
+                  alt="No results found"
+                  className="results-section__not-found-image"
+                />
+                <h3 className="results-section__not-found-title">
+                  Nothing found
+                </h3>
+                <p className="results-section__not-found-text">
+                  Sorry, but nothing matched your search terms.
+                </p>
               </div>
             )}
 
@@ -104,8 +136,6 @@ function Main({
                       isSaved={isArticleSaved(article)}
                       onSave={onSaveArticle}
                       onRemove={onRemoveArticle}
-                      showKeyword={true}
-                      keyword={searchQuery}
                       isLoggedIn={effectiveLoggedIn}
                     />
                   ))}

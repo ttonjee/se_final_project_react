@@ -1,5 +1,5 @@
 import React from "react";
-import CloseIcon from "../../assets/close.png";
+import CloseIcon from "../../assets/close.svg";
 import "../Header/Header.css";
 import "./ModalWithForm.css";
 

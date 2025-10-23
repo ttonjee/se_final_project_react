@@ -23,6 +23,31 @@ body {
 }
 
 /* DEBUG: outline every element to identify overflow sources. Remove this rule after debugging. */
-* {
-  outline: 1px solid rgba(255, 0, 0, 0.6) !important;
+/* Accessible focus styles: show a visible ring for keyboard users while keeping mouse focus subtle */
+/* Remove heavy debug outlines that interfere with focus styles */
+
+/* Provide smooth transitions for focus visuals */
+input,
+textarea,
+select,
+button,
+a {
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+/* Use focus-visible to show focus only when appropriate (keyboard navigation) */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(47, 113, 229, 0.18);
+  border-color: #2f71e5;
+  border-radius: 6px;
+}
+
+/* Keep a lightweight outline for any other focused element as a fallback */
+:focus {
+  outline: 2px solid rgba(47, 113, 229, 0.12);
 }

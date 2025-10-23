@@ -6,7 +6,6 @@
 }
 .header {
   position: absolute;
-  top: 39px;
   left: 0;
   right: 0;
   z-index: 100;
@@ -19,7 +18,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1440px; /* responsive: don't force overflow */
   width: 100%;
   height: 86px;
   background-color: transparent;
@@ -30,12 +28,6 @@
 }
 
 .header__container--saved {
-  box-shadow: 0px -1px 0px 0px rgba(209, 210, 214, 1) inset;
-}
-
-/* Use per-link underlines positioned on the header container line for saved mode */
-.header__container--saved {
-  /* keep positioned so child pseudo-elements can be absolute if needed */
   position: relative;
 }
 
@@ -51,10 +43,9 @@
 
 .header__container--saved .header__title--saved {
   color: rgba(26, 27, 34, 1) !important;
+  margin: 0;
 }
 
-/* When header is in saved mode, make link titles use inline-block so
-   the underline can match the text width, and ensure underline is black */
 .header__container--saved .header__link-title,
 .header__container--saved .header__link-title--saved {
   display: inline-block;
@@ -148,6 +139,7 @@
   color: rgba(255, 255, 255, 1);
   background: transparent;
   padding: 12px;
+  position: relative;
 }
 
 .header__menu-icon {
@@ -163,11 +155,9 @@
   }
 }
 
-@media (max-width: 700px) {
-  .header {
-    min-width: 320px;
-    min-height: 56px;
-    padding: 16px 16px;
+@media (max-width: 768px) {
+  .header__container {
+    padding: 22.73px 40px 18.47px 40px;
   }
 
   .header__image {
@@ -192,32 +182,45 @@
   }
 
   .header__button {
-    display: none;
+    width: 152px;
+  }
+
+  .header__container--saved .header__button,
+  .header__button--saved {
+    width: 100px;
+    height: 40px;
+    padding: 7px 50px 8px 15px;
+  }
+}
+
+@media (max-width: 645px) {
+  .header__container {
+    height: 56px;
+    margin: 0 auto;
+  }
+
+  .header .header__title {
+    font-size: 16px;
   }
   .header__link-title {
     display: none;
   }
 
+  .header__button {
+    display: none;
+  }
+
   .header__menu-icon {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    background: no-repeat center center;
-    background-size: contain;
+    display: block;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
-    margin-left: auto;
   }
 }
 
-/* Reduce header horizontal padding on small screens to avoid overflow */
-@media (max-width: 1024px) {
-  .header__container {
-    padding: 8px 24px 0px;
-  }
-}
-
-@media (max-width: 480px) {
-  .header__container {
-    padding: 8px 16px 0px;
+@media screen and (max-width: 508px) {
+  .header__content {
+    width: 280px;
+    height: auto;
   }
 }

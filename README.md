@@ -98,7 +98,8 @@ src/
 │   └── smiling face.svg # About section placeholder
 └── vendor/              # Third-party styles
     ├── fonts/           # Web fonts
-    └── normalize.css    # CSS reset
+   └── fonts/           # Web fonts
+
 ```
 
 ## Key Features Implementation

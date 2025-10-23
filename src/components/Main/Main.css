@@ -1,7 +1,7 @@
 /* Article cards grid styling */
 .main__cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 16px;
   margin-bottom: 64px;
   padding: 0;
@@ -9,18 +9,24 @@
 .main {
   /* allow main to grow so footer is pushed to bottom */
   flex: 1 0 auto;
-  max-width: 1440px;
 }
 
 .search-section {
+  height: 576px; /* full viewport height */
+  width: 100%;
+  margin: 0 auto;
+
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
-    url("../../assets/Main Page not logged.jpg");
-  background-size: 1440px;
+    url("../../assets/Main Page not logged.svg");
+  background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+
   color: white;
-  padding: 120px 0 80px 0;
+  padding: 160px 0 80px 0;
   text-align: center;
   position: relative;
+  box-sizing: border-box;
 }
 
 .search-section__content {
@@ -33,28 +39,30 @@
   font-family: "Roboto Slab", serif;
   font-size: 60px;
   font-weight: 400;
-  margin: 0 auto 32px auto;
   line-height: 64px;
+  letter-spacing: 0px;
   color: rgba(255, 255, 255, 1);
-  width: 608px;
+  max-width: 608px;
+  margin: 0 auto 32px auto; /* center, with bottom spacing */
+  text-align: start;
 }
 
 .search-section__subtitle {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  margin-bottom: 40px;
-  opacity: 0.9;
+  margin-bottom: 88px;
+  opacity: 1;
   color: rgba(255, 255, 255, 1);
-  width: 608px;
+  width: 100%;
+  letter-spacing: 0px;
 }
 
 .results-section {
-  background-color: #f8f9fa;
+  background-color: rgba(245, 246, 247, 1);
 }
 
 .results-section__content {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 80px 104px 80px 104px;
   text-align: center;
@@ -70,31 +78,36 @@
   text-align: left;
 }
 
-.results-section__error,
+.results-section__not-found-image {
+  width: 82.5px;
+  height: 82.5px;
+  color: rgba(108, 112, 122, 1);
+  border: 1px solid rgba(108, 112, 122, 1);
+  margin-bottom: 31.5px;
+}
+
 .results-section__not-found {
-  padding: 60px 20px;
   text-align: center;
 }
 
-.results-section__not-found h3 {
+.results-section__not-found-title {
   font-family: "Roboto Slab", serif;
   font-weight: 400;
   font-size: 26px;
   line-height: 30px;
-  color: #1a1b22;
-  margin: 0 0 24px 0;
+  letter-spacing: 0px;
+  color: rgba(26, 27, 34, 1);
+  margin: 0 0 16px 0;
 }
 
-.results-section__error p,
-.results-section__not-found p {
+.results-section__not-found-text {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  color: #b6bcbf;
-  margin: 0;
-  max-width: 500px;
+  color: rgba(108, 112, 122, 1);
+  max-width: 356px;
   margin: 0 auto;
-  line-height: 1.5;
+  line-height: 24px;
 }
 
 .results-section__show-more {
@@ -119,45 +132,100 @@
   color: #ffffff;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 585px) {
   .search-section {
-    padding: 100px 0 40px 0;
-    background-attachment: scroll;
+    padding: 85px 20px 40px;
   }
 
   .search-section__title {
-    font-size: 2.2rem;
+    font-size: 36px;
+    line-height: 44px;
+    max-width: 385px;
+    margin: 38px 0 16px 57px;
+    text-align: start;
   }
 
   .search-section__subtitle {
-    font-size: 1.1rem;
+    text-align: start;
+    width: 452px;
+    position: relative;
+    left: 60px;
+    margin-bottom: 24px;
   }
 
-  .results-section {
-    padding: 40px 0;
+  .search-section__content {
+    padding: 0;
   }
 
-  /* On tablet (<=768px) show 3 cards per row to match Figma.
-     Use minmax(0, 1fr) so columns can shrink without overflowing and
-     reduce horizontal padding so three cards fit comfortably. */
   .results-section__content {
-    padding: 40px 24px;
+    padding: 32px 16px;
   }
 
   .main__cards-grid {
-    /* three equal columns that can shrink below intrinsic min width */
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+    gap: 12px;
     margin-bottom: 32px;
   }
 }
 
-@media (max-width: 480px) {
-  .results-section__content {
-    padding: 24px 16px; /* reduce padding to prevent horizontal overflow */
+@media screen and (max-width: 320px) {
+  .search-section__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-section {
+    max-height: 536px;
+  }
+  .search-section__title {
+    font-size: 36px;
+    max-width: 285px;
+    height: 80px;
+    margin: 0;
+    line-height: 36px;
+  }
+  .search-section__subtitle {
+    font-size: 18px;
+    width: 288px;
+    margin: 16px 0 0 0;
+    /* position: relative; */
+    left: 10px;
   }
 
   .main__cards-grid {
-    grid-template-columns: 1fr; /* single column for small screens */
+    grid-template-columns: fr; /* single column for small screens */
+  }
+
+  results-section__show-more {
+    width: 240px;
+    height: 56px;
+  }
+}
+
+@media screen and (max-width: 526px) {
+  .results-section__show-more {
+    width: 240px;
+    height: 56px;
+  }
+
+  .search-section__subtitle {
+    max-width: 288px;
+  }
+}
+
+@media screen and (max-width: 462px) {
+  .results-section__title {
+    width: 285px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main__cards-grid {
+    grid-template-columns: fr; /* single column for small screens */
+  }
+  .results-section__content {
+    grid-template-columns: fr;
   }
 }

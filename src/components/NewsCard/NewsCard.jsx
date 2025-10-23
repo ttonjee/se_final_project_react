@@ -3,23 +3,28 @@ import BookmarkIcon from "../../assets/icons/bookmark.svg";
 import BookmarkFilledIcon from "../../assets/icons/bookmark-filled.svg";
 import { formatPublicationDate } from "../../utils/dateUtils";
 import "./NewsCard.css";
+import TrashIcon from "../../assets/trash.svg";
 
 function NewsCard({
   article,
   isSaved = false,
   onSave = null,
   onRemove = null,
-  // keyword removed
-  isLoggedIn = false, // Add prop to track login status
+  isLoggedIn = false,
+
+  onSavedNewsRoute = false,
 }) {
-  console.log("NewsCard article:", article);
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [showBookmarkTooltip, setShowBookmarkTooltip] = useState(false);
+  const [showTrashTooltip, setShowTrashTooltip] = useState(false);
 
   if (!article) return null;
 
-  const handleSaveClick = () => {
+  const handleSaveClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     if (!isLoggedIn) {
-      return; // Do nothing if user is not logged in
+      return; // Do nothing if not logged in
     }
 
     if (isSaved && onRemove) {
@@ -29,25 +34,20 @@ function NewsCard({
     }
   };
 
-  const handleMouseEnter = () => {
-    if (!isLoggedIn) {
-      setShowTooltip(true);
-    }
-  };
+  const handleRemoveClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-  const handleMouseLeave = () => {
-    setShowTooltip(false);
+    if (onRemove) {
+      onRemove(article);
+    }
   };
 
   // Format the publication date
   const formattedDate = formatPublicationDate(article.publishedAt);
 
-  console.log("=====================");
-  console.log(article);
-
   return (
     <article className="news-card">
-      {/* Link the image and content to the article URL and open in a new tab */}
       <a
         className="news-card__link"
         href={article.url || "#"}
@@ -62,42 +62,73 @@ function NewsCard({
           />
         </div>
 
-      {/* Save/Remove button with tooltip */}
-      <div className="news-card__save-container">
-        <button
-          className={`news-card__save-button ${
-            isSaved ? "news-card__save-button_active" : ""
-          } ${!isLoggedIn ? "news-card__save-button_inactive" : ""}`}
-          onClick={handleSaveClick}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          aria-label={isSaved ? "Remove from saved" : "Save article"}
-        >
-          <img
-            src={isSaved ? BookmarkFilledIcon : BookmarkIcon}
-            alt={isSaved ? "Remove bookmark" : "Add bookmark"}
-            className="news-card__bookmark-icon"
-          />
-        </button>
-        {showTooltip && (
-          <div className="news-card__tooltip">Sign in to save articles</div>
-        )}
-      </div>
+        <div className="news-card__save-container">
+          {!onSavedNewsRoute && (
+            <>
+              <button
+                className={`news-card__save-button ${
+                  isSaved ? "news-card__save-button_active" : ""
+                } ${!isLoggedIn ? "news-card__save-button_inactive" : ""}`}
+                onClick={handleSaveClick}
+                onMouseEnter={() => {
+                  if (!isLoggedIn) setShowBookmarkTooltip(true);
+                }}
+                onMouseLeave={() => setShowBookmarkTooltip(false)}
+                aria-label={isSaved ? "Remove from saved" : "Save article"}
+                aria-pressed={isSaved}
+                title={isSaved ? "Delete saved article" : "Save article"}
+              >
+                <img
+                  src={isSaved ? BookmarkFilledIcon : BookmarkIcon}
+                  alt={isSaved ? "Remove bookmark" : "Add bookmark"}
+                />
+              </button>
+
+              {/* Bookmark tooltip only when hovering bookmark button & not logged in */}
+              {!isLoggedIn && showBookmarkTooltip && (
+                <div className="news-card__tooltip">
+                  Sign in to save articles
+                </div>
+              )}
+            </>
+          )}
+          {/* Trash icon with hover tooltip (only if saved) */}
+          {onSavedNewsRoute && (
+            <div
+              className="news-card__trash-wrapper"
+              onMouseEnter={() => setShowTrashTooltip(true)}
+              onMouseLeave={() => setShowTrashTooltip(false)}
+            >
+              <button
+                type="button"
+                className="news-card__trash-button"
+                onClick={handleRemoveClick}
+                aria-label="Delete saved article"
+              >
+                <img
+                  src={TrashIcon}
+                  alt=""
+                  aria-hidden="true"
+                  className="news-card__trash-icon"
+                />
+              </button>
+              {showTrashTooltip && (
+                <div className="news-card__trash-tooltip">
+                  Remove from saved
+                </div>
+              )}
+            </div>
+          )}
+        </div>
 
         <div className="news-card__content">
-        {/* keyword removed */}
+          {formattedDate && <p className="news-card__date">{formattedDate}</p>}
 
-        {/* Publication date */}
-        {formattedDate && <p className="news-card__date">{formattedDate}</p>}
+          <h3 className="news-card__title">{article.title}</h3>
 
-        {/* Publication title */}
-        <h3 className="news-card__title">{article.title}</h3>
+          <p className="news-card__description">{article.description}</p>
 
-        {/* Publication description */}
-        <p className="news-card__description">{article.description}</p>
-
-        {/* Source name */}
-        <p className="news-card__source">{article.source?.name}</p>
+          <p className="news-card__source">{article.source?.name}</p>
         </div>
       </a>
     </article>

@@ -6,7 +6,6 @@
 
 .saved-news-header__content {
   max-width: 1200px;
-  margin: 0 auto;
   padding: 0 104px;
 }
 
@@ -14,10 +13,10 @@
   font-family: "Roboto Slab", serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 46px;
+  line-height: 24px; /* matches Figma height */
   color: rgba(26, 27, 34, 1);
-  width: 530px;
-  margin: 28px 0 30px 0;
+  width: 712px;
+  margin: 0px;
 }
 
 .saved-news-header__subtitle {
@@ -25,7 +24,9 @@
   font-weight: 400;
   font-size: 40px;
   color: rgba(26, 27, 34, 0.6);
-  margin: 8px 0 0 0;
+  letter-spacing: 0px;
+  width: 530px;
+  text-wrap: wrap;
 }
 
 .saved-news-header__keywords {
@@ -45,13 +46,30 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: rgba(26, 27, 34, 1);
 }
 
 .saved-news-header__keyword {
   font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 18px;
-  color: #1a1b22;
+}
+
+.saved-news-header__keyword--highlight {
+  font-weight: 700;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 1);
+}
+
+.saved-news-header__keyword--match {
+  font-weight: 800;
+  color: rgba(26, 27, 34, 1);
+  background: rgba(47, 113, 229, 0.08);
+  padding: 4px 8px;
+  border-radius: 12px;
 }
 
 .saved-news-header__keyword:not(:last-child)::after {
@@ -59,8 +77,11 @@
   margin-left: 2px;
 }
 
-/* Ensure the underline image added under the greeting is visible and sized */
-/* no inline underline image — use pseudo-element above */
+.saved-news-header__menu-icon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
 
 @media (max-width: 768px) {
   .saved-news-header {
@@ -68,17 +89,74 @@
   }
 
   .saved-news-header__content {
-    padding: 0 20px;
+    padding: 0 40px;
+  }
+
+  .saved-news-header__subtitle {
+    font-size: 30px;
+    max-width: 336px;
+    margin: 16px 0 16px 0;
   }
 
   .saved-news-header__title {
-    font-size: 28px;
-    line-height: 34px;
+    font-size: 14px;
+    margin-top: 24px;
+    color: rgba(26, 27, 34, 0.5);
+  }
+  .saved-news-header__keyword {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: rgba(26, 27, 34, 1);
   }
 
   .saved-news-header__keywords {
-    flex-direction: column;
-    align-items: flex-start;
     gap: 8px;
+  }
+}
+
+/* small helper for home link spacing */
+.saved-news-header__home-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.saved-news-header__vector {
+  margin-right: 8px;
+  height: 16px;
+}
+
+@media screen and (max-width: 369px) {
+  .header__container--saved .header__link-title,
+  .header__container--saved .header__link-title--saved {
+    display: none;
+  }
+
+  .header__menu-icon .header__menu-icon--saved {
+    display: block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    color: black;
+  }
+
+  .saved-news-header__subtitle {
+    font-size: 24px;
+    max-width: 280px;
+    margin: 16px 0 16px 0;
+  }
+
+  .saved-news-header__title {
+    font-size: 12px;
+    margin-top: 16px;
+    color: rgba(26, 27, 34, 0.5);
+  }
+
+  .saved-news-header__keywords-label {
+    font-size: 16px;
+  }
+
+  .saved-news-header__keyword {
+    font-size: 16px;
   }
 }

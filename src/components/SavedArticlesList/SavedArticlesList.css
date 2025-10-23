@@ -4,7 +4,6 @@
 }
 
 .saved-articles-list__content {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 104px;
 }
@@ -70,7 +69,7 @@
   }
 
   .saved-articles-list__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
     gap: 12px;
   }
 

@@ -45,6 +45,7 @@ function SavedArticlesList({
               onRemove={onRemoveArticle}
               showKeyword={true}
               keyword={article.keyword || "General"}
+              onSavedNewsRoute={true}
             />
           ))}
         </div>
