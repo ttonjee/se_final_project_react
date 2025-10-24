@@ -34,7 +34,7 @@ function SearchForm({ onSearch }) {
           placeholder="Enter topic"
           aria-label="Search topic"
           className={`search-form__input ${
-            error ? "search-form__input_error" : ""
+            error ? "search-form__input--error" : ""
           }`}
         />
       </div>

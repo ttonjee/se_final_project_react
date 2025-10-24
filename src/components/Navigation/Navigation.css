@@ -17,12 +17,12 @@
   color: #2f71e5;
 }
 
-.navigation__link_active {
+.navigation__link--active {
   color: #2f71e5;
   font-weight: 500;
 }
 
-.navigation__link_active::after {
+.navigation__link--active::after {
   content: "";
   position: absolute;
   bottom: -5px;

@@ -9,7 +9,7 @@ function Navigation({ onSignInClick }) {
         to="/"
         className={({ isActive }) =>
           isActive
-            ? "navigation__home navigation__home_active"
+            ? "navigation__home navigation__home--active"
             : "navigation__home"
         }
       >

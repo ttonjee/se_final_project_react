@@ -41,7 +41,6 @@
   padding: 0;
   margin-top: 0;
 }
-
 .modal__error {
   color: rgba(255, 0, 0, 1);
   font-family: "Inter", sans-serif;
@@ -134,7 +133,7 @@
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-.modal_opened {
+.modal--opened {
   opacity: 1;
   visibility: visible;
 }
@@ -169,8 +168,8 @@
 
 .modal__close-button {
   position: absolute;
-  top: -45px;
-  right: -6px;
+  top: -33px;
+  right: -33px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -193,7 +192,7 @@
 }
 
 @media (max-width: 768px) {
-  .modal_opened .modal__container--signin {
+  .modal--opened .modal__container--signin {
     background-image: url("../../assets/Keyboard.svg");
     background-repeat: no-repeat;
     background-position: top right;

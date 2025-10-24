@@ -80,7 +80,7 @@ function SignInModal({ isOpen, onClose, onSignIn, onSwitchToRegister }) {
           id="signin__modal-email-input-err"
           className={`modal__error ${
             errors.email
-              ? "modal__error-input " + validationConfig.errorClass
+              ? "modal__error--input " + validationConfig.errorClass
               : ""
           }`}
         >

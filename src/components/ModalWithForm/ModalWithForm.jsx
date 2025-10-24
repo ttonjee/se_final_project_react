@@ -13,9 +13,10 @@ function ModalWithForm({
   children,
   containerClassName = "",
   formClassName = "",
+  titleClassName = "",
 }) {
   return (
-    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
+  <div className={`modal ${isOpen ? "modal--opened" : ""}`}>
       <div className={`modal__container ${containerClassName}`}>
         <button
           type="button"

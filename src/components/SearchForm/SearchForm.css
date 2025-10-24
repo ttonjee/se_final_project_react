@@ -74,6 +74,12 @@
   text-align: left;
 }
 
+/* BEM modifier for input error state */
+.search-form__input--error {
+  border: 1px solid #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.08);
+}
+
 .search-form__button:hover {
   background-color: rgba(47, 113, 229, 1);
 }

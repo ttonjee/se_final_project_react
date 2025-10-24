@@ -67,8 +67,8 @@ function NewsCard({
             <>
               <button
                 className={`news-card__save-button ${
-                  isSaved ? "news-card__save-button_active" : ""
-                } ${!isLoggedIn ? "news-card__save-button_inactive" : ""}`}
+                  isSaved ? "news-card__save-button--active" : ""
+                } ${!isLoggedIn ? "news-card__save-button--inactive" : ""}`}
                 onClick={handleSaveClick}
                 onMouseEnter={() => {
                   if (!isLoggedIn) setShowBookmarkTooltip(true);
