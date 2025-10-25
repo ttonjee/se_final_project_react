@@ -3,8 +3,16 @@ import { NavLink, useLocation } from "react-router-dom";
 import vectorIcon from "../../assets/vector-stroke.svg";
 import menuIcon from "../../assets/menu.svg";
 import logoutIcon from "../../assets/logout.svg";
+import CloseIcon from "../../assets/close.svg";
 
-function Header({ onSignInClick, user, onLogout }) {
+function Header({
+  onSignInClick,
+  user,
+  onLogout,
+  isMenuOpen,
+  handleMenuClick,
+  handleClose,
+}) {
   console.log("Header mounted. onLogout:", onLogout);
   const location = useLocation();
   const isSavedPage = location.pathname === "/saved-news";
@@ -26,13 +34,59 @@ function Header({ onSignInClick, user, onLogout }) {
         <nav
           className={`header__nav${isSavedPage ? " header__nav--saved" : ""}`}
         >
-          <span
-            className={`header__menu-icon${
-              isSavedPage ? " header__menu-icon--saved" : ""
-            }`}
-          >
-            <img src={menuIcon} alt="menu" />
-          </span>
+          {/* Menu icon */}
+          {!isMenuOpen && (
+            <span
+              className={`header__menu-icon${
+                isSavedPage ? " header__menu-icon--saved" : ""
+              }`}
+              onClick={handleMenuClick}
+            >
+              <img src={menuIcon} alt="menu" />
+            </span>
+          )}
+
+          {isMenuOpen && (
+            <div className="header__overlay">
+              <div className="header__box">
+                <div className="header__box--container">
+                  <h1 className="header__box--title">NewsExplore</h1>
+
+                  <button
+                    type="button"
+                    className="header__box--close-button"
+                    onClick={handleClose}
+                  >
+                    <img
+                      src={CloseIcon}
+                      alt="Close"
+                      className="header__box--close-icon"
+                    />
+                  </button>
+                </div>
+                <div className="header__box--content">
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      `header__link-box-title${
+                        isActive ? " header__link-box-title--active" : ""
+                      }`
+                    }
+                  >
+                    Home
+                  </NavLink>
+
+                  <button
+                    className="header__box--signin-button"
+                    onClick={onSignInClick}
+                  >
+                    Sign In
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
           <NavLink
             to="/"
             className={({ isActive }) =>

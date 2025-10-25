@@ -13,6 +13,9 @@ function HomePage({
   user,
   setUser,
   onLogout,
+  isMenuOpen,
+  handleMenuClick,
+  handleClose,
 }) {
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -54,6 +57,9 @@ function HomePage({
         onSignInClick={handleSignInClick}
         user={user}
         onLogout={onLogout}
+        isMenuOpen={isMenuOpen}
+        handleMenuClick={handleMenuClick}
+        handleClose={handleClose}
       />
       <Main
         articles={articles}

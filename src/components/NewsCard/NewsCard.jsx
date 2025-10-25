@@ -48,6 +48,64 @@ function NewsCard({
 
   return (
     <article className="news-card">
+      {/* save/trash buttons moved outside the link to avoid nested interactive elements */}
+      <div className="news-card__save-container">
+        {!onSavedNewsRoute && (
+          <>
+            <button
+              className={`news-card__save-button ${
+                isSaved ? "news-card__save-button--active" : ""
+              } ${!isLoggedIn ? "news-card__save-button--inactive" : ""}`}
+              onClick={handleSaveClick}
+              onMouseEnter={() => {
+                if (!isLoggedIn) setShowBookmarkTooltip(true);
+              }}
+              onMouseLeave={() => setShowBookmarkTooltip(false)}
+              aria-label={isSaved ? "Remove from saved" : "Save article"}
+              aria-pressed={isSaved}
+              title={isSaved ? "Delete saved article" : "Save article"}
+            >
+              <img
+                src={isSaved ? BookmarkFilledIcon : BookmarkIcon}
+                alt={isSaved ? "Remove bookmark" : "Add bookmark"}
+                className="news-card__bookmark-icon"
+              />
+            </button>
+
+            {/* Bookmark tooltip only when hovering bookmark button & not logged in */}
+            {!isLoggedIn && showBookmarkTooltip && (
+              <div className="news-card__tooltip">Sign in to save articles</div>
+            )}
+          </>
+        )}
+
+        {/* Trash icon with hover tooltip (only if saved) */}
+        {onSavedNewsRoute && (
+          <div
+            className="news-card__trash-wrapper"
+            onMouseEnter={() => setShowTrashTooltip(true)}
+            onMouseLeave={() => setShowTrashTooltip(false)}
+          >
+            <button
+              type="button"
+              className="news-card__trash-button"
+              onClick={handleRemoveClick}
+              aria-label="Delete saved article"
+            >
+              <img
+                src={TrashIcon}
+                alt="trash icon"
+                aria-hidden="true"
+                className="news-card__trash-icon"
+              />
+            </button>
+            {showTrashTooltip && (
+              <div className="news-card__trash-tooltip">Remove from saved</div>
+            )}
+          </div>
+        )}
+      </div>
+
       <a
         className="news-card__link"
         href={article.url || "#"}
@@ -60,65 +118,6 @@ function NewsCard({
             src={article.urlToImage}
             alt={article.title}
           />
-        </div>
-
-        <div className="news-card__save-container">
-          {!onSavedNewsRoute && (
-            <>
-              <button
-                className={`news-card__save-button ${
-                  isSaved ? "news-card__save-button--active" : ""
-                } ${!isLoggedIn ? "news-card__save-button--inactive" : ""}`}
-                onClick={handleSaveClick}
-                onMouseEnter={() => {
-                  if (!isLoggedIn) setShowBookmarkTooltip(true);
-                }}
-                onMouseLeave={() => setShowBookmarkTooltip(false)}
-                aria-label={isSaved ? "Remove from saved" : "Save article"}
-                aria-pressed={isSaved}
-                title={isSaved ? "Delete saved article" : "Save article"}
-              >
-                <img
-                  src={isSaved ? BookmarkFilledIcon : BookmarkIcon}
-                  alt={isSaved ? "Remove bookmark" : "Add bookmark"}
-                />
-              </button>
-
-              {/* Bookmark tooltip only when hovering bookmark button & not logged in */}
-              {!isLoggedIn && showBookmarkTooltip && (
-                <div className="news-card__tooltip">
-                  Sign in to save articles
-                </div>
-              )}
-            </>
-          )}
-          {/* Trash icon with hover tooltip (only if saved) */}
-          {onSavedNewsRoute && (
-            <div
-              className="news-card__trash-wrapper"
-              onMouseEnter={() => setShowTrashTooltip(true)}
-              onMouseLeave={() => setShowTrashTooltip(false)}
-            >
-              <button
-                type="button"
-                className="news-card__trash-button"
-                onClick={handleRemoveClick}
-                aria-label="Delete saved article"
-              >
-                <img
-                  src={TrashIcon}
-                  alt="trash icon"
-                  aria-hidden="true"
-                  className="news-card__trash-icon"
-                />
-              </button>
-              {showTrashTooltip && (
-                <div className="news-card__trash-tooltip">
-                  Remove from saved
-                </div>
-              )}
-            </div>
-          )}
         </div>
 
         <div className="news-card__content">

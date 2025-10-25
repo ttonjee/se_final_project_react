@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../HomePage/HomePage";
 import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
@@ -14,6 +14,7 @@ function App() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // derive logged-in boolean from the canonical `user` state
   const isLoggedIn = !!user;
@@ -46,6 +47,16 @@ function App() {
   // Open Sign In Modal
   const handleSignInClick = () => {
     setIsSignInModalOpen(true);
+  };
+
+  const handleMenuClick = () => {
+    console.log("handleMenuClick called");
+    setIsMenuOpen(true);
+  };
+
+  const handleClose = () => {
+    console.log("handleClose called");
+    setIsMenuOpen(false);
   };
 
   // Close all modals
@@ -165,6 +176,9 @@ function App() {
                 setUser={setUser}
                 onLogout={handleLogout}
                 handleSearch={handleSearch}
+                handleMenuClick={handleMenuClick}
+                isMenuOpen={isMenuOpen}
+                handleClose={handleClose}
               />
             }
           />
@@ -199,6 +213,7 @@ function App() {
         onRegister={handleRegister}
         onSwitchToLogin={handleSwitchToLogin}
       />
+
       <Footer />
     </div>
   );

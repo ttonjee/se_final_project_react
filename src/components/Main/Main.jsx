@@ -133,7 +133,7 @@ function Main({
                     <NewsCard
                       key={`${article.title}-${index}`}
                       article={article}
-                      isSaved={isArticleSaved(article)}
+                      isSaved={isArticleSaved(article.url)}
                       onSave={onSaveArticle}
                       onRemove={onRemoveArticle}
                       isLoggedIn={effectiveLoggedIn}
