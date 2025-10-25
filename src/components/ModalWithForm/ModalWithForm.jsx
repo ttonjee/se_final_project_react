@@ -16,7 +16,7 @@ function ModalWithForm({
   titleClassName = "",
 }) {
   return (
-  <div className={`modal ${isOpen ? "modal--opened" : ""}`}>
+    <div className={`modal ${isOpen ? "modal--opened" : ""}`}>
       <div className={`modal__container ${containerClassName}`}>
         <button
           type="button"
@@ -25,7 +25,7 @@ function ModalWithForm({
         >
           <img src={CloseIcon} alt="Close" className="modal__close-icon" />
         </button>
-        <h2 className="modal__title">{titleText}</h2>
+        <h2 className={`modal__title ${titleClassName}`}>{titleText}</h2>
         <form onSubmit={onSubmit} className={`modal__form ${formClassName}`}>
           {children}
           {(buttonText || alternativeButton) && (

@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
-  "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
@@ -18,8 +18,10 @@
     "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.5",
     "@babel/eslint-parser": "^7.28.4",
-    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.27.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

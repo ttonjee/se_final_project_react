@@ -6,15 +6,12 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import Footer from "../Footer/Footer";
 import "./App.css";
 import SignInModal from "../SignInModal/SignInModal";
-import Preloader from "../Preloader/Preloader";
 
 function App() {
   const [articles, setArticles] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  // start true temporarily so the preloader is visible on page load for testing
-
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
 
@@ -45,11 +42,6 @@ function App() {
       console.warn("Failed to persist demo user to localStorage:", err);
     }
   }, [user]);
-
-  // clear the temporary preloader after a short delay so the UI is visible
-  // (this is for testing — you can remove this effect when done)
-
-  // ...existing code...
 
   // Open Sign In Modal
   const handleSignInClick = () => {
@@ -100,7 +92,6 @@ function App() {
     }
 
     setError(null);
-
     try {
       const data = await fetchNewsArticles(query);
       if (data.articles.length === 0) {
@@ -115,26 +106,28 @@ function App() {
         "Sorry, something went wrong during the request. Please try again later."
       );
       setArticles([]);
-    } finally {
     }
   };
 
-  const handleSaveArticle = (article) => {
-    setSavedArticles((prev) => {
-      const isAlreadySaved = prev.some((saved) => saved.url === article.url);
-      return isAlreadySaved ? prev : [...prev, article];
-    });
-  };
+  const isArticleSaved = useCallback(
+    (url) => savedArticles.some((saved) => saved.url === url),
+    [savedArticles]
+  );
 
-  const handleRemoveArticle = (article) => {
+  const handleSaveArticle = useCallback(
+    (article) => {
+      setSavedArticles((prev) =>
+        isArticleSaved(article.url) ? prev : [...prev, article]
+      );
+    },
+    [isArticleSaved]
+  );
+
+  const handleRemoveArticle = useCallback((article) => {
     setSavedArticles((prev) =>
       prev.filter((saved) => saved.url !== article.url)
     );
-  };
-
-  const isArticleSaved = (article) => {
-    return savedArticles.some((saved) => saved.url === article.url);
-  };
+  }, []);
 
   return (
     <div className="app">
