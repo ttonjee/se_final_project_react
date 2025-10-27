@@ -128,11 +128,11 @@
 
 @media screen and (max-width: 369px) {
   .header__container--saved .header__link-title,
-  .header__container--saved .header__link-title--saved {
+  .header__container--saved .header__link-title-saved {
     display: none;
   }
 
-  .header__menu-icon .header__menu-icon--saved {
+  .header__menu-icon .header__menu-icon-saved {
     display: block;
     width: 24px;
     height: 24px;

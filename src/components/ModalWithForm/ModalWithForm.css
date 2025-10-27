@@ -1,5 +1,5 @@
 /* Registration Success Modal Styles */
-.modal__container--success {
+.modal__container-success {
   max-width: 430px;
   height: 182px;
   padding: 43px 36px 51px 36px;
@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.modal__title--success {
+.modal__title-success {
   color: #2e7d32;
   text-align: center;
   margin-bottom: 18px;
@@ -133,7 +133,7 @@
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-.modal--opened {
+.modal-opened {
   opacity: 1;
   visibility: visible;
 }
@@ -181,18 +181,18 @@
   position: absolute;
 }
 
-.modal__container--register {
+.modal__container-signin {
   max-width: 358px;
   height: 406px;
   padding: 24px 36px 28px 36px;
 }
 
-.modal__form--register {
+.modal__form-register {
   gap: 12px;
 }
 
 @media (max-width: 768px) {
-  .modal--opened .modal__container--signin {
+  .modal--opened .modal__container-signin {
     background-image: url("../../assets/Keyboard.svg");
     background-repeat: no-repeat;
     background-position: top right;
@@ -222,11 +222,5 @@
   .modal__close-icon {
     width: 24px;
     height: 24px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .header__menu-icon {
-    display: none;
   }
 }

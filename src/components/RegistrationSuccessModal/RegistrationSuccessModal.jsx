@@ -6,9 +6,9 @@ function RegistrationSuccessModal({ isOpen, onClose }) {
     <ModalWithForm
       isOpen={isOpen}
       handleClose={onClose}
-      containerClassName="modal__container--success"
+      containerClassName="modal__container-success"
     >
-      <h2 className="modal__title modal__title--success">
+      <h2 className="modal__title modal__title-success">
         Registration Successful!
       </h2>
 

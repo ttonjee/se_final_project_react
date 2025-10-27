@@ -24,13 +24,13 @@ function SavedNewsHeader({
     <section className="saved-news-header">
       <nav className="saved-news-header__content">
         <div>
-          <span className="header__menu-icon header__menu-icon--saved">
+          <span className="header__menu-icon header__menu-icon-saved">
             <img src={menuIcon} alt="menu" />
           </span>
 
           <Link
             to="/"
-            className="header__link-title header__link-title--saved"
+            className="header__link-title header__link-title-saved"
             style={{ display: "inline-flex", alignItems: "center" }}
           >
             <img
@@ -63,7 +63,7 @@ function SavedNewsHeader({
                 key={`${keyword}-${i}`}
                 className={`saved-news-header__keyword ${
                   highlighted.has(keyword)
-                    ? "saved-news-header__keyword--match"
+                    ? "saved-news-header__keyword-match"
                     : ""
                 }`}
               >
@@ -73,7 +73,7 @@ function SavedNewsHeader({
             ))}
 
             {keywords.length > 2 && (
-              <span className="saved-news-header__keyword saved-news-header__keyword--faded">
+              <span className="saved-news-header__keyword saved-news-header__keyword-faded">
                 and {keywords.length - 2} other
               </span>
             )}

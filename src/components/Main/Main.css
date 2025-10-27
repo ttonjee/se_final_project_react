@@ -133,7 +133,10 @@
 
 @media screen and (max-width: 768px) {
   .main__cards-grid {
-    grid-template-columns: 3fr;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .results-section__content {
+    padding: 48px 24px;
   }
 }
 
@@ -182,13 +185,6 @@
 
   .search-section__subtitle {
     max-width: 288px;
-  }
-}
-
-/* Reduce horizontal padding on results for medium screens to avoid overflow */
-@media screen and (max-width: 768px) {
-  .results-section__content {
-    padding: 48px 24px;
   }
 }
 

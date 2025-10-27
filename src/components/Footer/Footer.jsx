@@ -27,26 +27,26 @@ function Footer() {
           <div className="footer__icons">
             <a
               href="https://github.com"
-              className="footer__link footer__link--github"
+              className="footer__link footer__link_type_github"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
                 src={githubIcon}
                 alt="GitHub"
-                className="footer__github-icon"
+                className="footer__github_type_icon"
               />
             </a>
             <a
               href="https://linkedin.com"
-              className="footer__link footer__link--linkedin"
+              className="footer__link footer__link_type_linkedin"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
                 src={linkedinIcon}
                 alt="LinkedIn"
-                className="footer__linkedin-icon"
+                className="footer__linkedin_type_icon"
               />
             </a>
           </div>

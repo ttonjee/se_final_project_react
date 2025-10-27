@@ -21,24 +21,24 @@ function Header({
     <header className="header">
       <div
         className={`header__container ${
-          isSavedPage ? "header__container--saved" : ""
+          isSavedPage ? "header__container-saved" : ""
         }`}
       >
         <h1
           className={`header__title${
-            isSavedPage ? " header__title--saved" : ""
+            isSavedPage ? " header__title-saved" : ""
           }`}
         >
           NewsExplorer
         </h1>
         <nav
-          className={`header__nav${isSavedPage ? " header__nav--saved" : ""}`}
+          className={`header__nav${isSavedPage ? " header__nav-saved" : ""}`}
         >
           {/* Menu icon */}
           {!isMenuOpen && (
             <span
               className={`header__menu-icon${
-                isSavedPage ? " header__menu-icon--saved" : ""
+                isSavedPage ? " header__menu-icon-saved" : ""
               }`}
               onClick={handleMenuClick}
             >
@@ -49,27 +49,27 @@ function Header({
           {isMenuOpen && (
             <div className="header__overlay">
               <div className="header__box">
-                <div className="header__box--container">
-                  <h1 className="header__box--title">NewsExplore</h1>
+                <div className="header__box-container">
+                  <h1 className="header__box-title">NewsExplore</h1>
 
                   <button
                     type="button"
-                    className="header__box--close-button"
+                    className="header__box-close-button"
                     onClick={handleClose}
                   >
                     <img
                       src={CloseIcon}
                       alt="Close"
-                      className="header__box--close-icon"
+                      className="header__box-close-icon"
                     />
                   </button>
                 </div>
-                <div className="header__box--content">
+                <div className="header__box-content">
                   <NavLink
                     to="/"
                     className={({ isActive }) =>
                       `header__link-box-title${
-                        isActive ? " header__link-box-title--active" : ""
+                        isActive ? " header__link-box-title-active" : ""
                       }`
                     }
                   >
@@ -77,7 +77,7 @@ function Header({
                   </NavLink>
 
                   <button
-                    className="header__box--signin-button"
+                    className="header__box-signin-button"
                     onClick={onSignInClick}
                   >
                     Sign In
@@ -91,8 +91,8 @@ function Header({
             to="/"
             className={({ isActive }) =>
               `header__link-title${
-                isSavedPage ? " header__link-title--saved" : ""
-              }${isActive ? " header__link-title--active" : ""}`
+                isSavedPage ? " header__link-title-saved" : ""
+              }${isActive ? " header__link-title-active" : ""}`
             }
           >
             Home
@@ -107,8 +107,8 @@ function Header({
               to="/saved-news"
               className={({ isActive }) =>
                 `header__link-title${
-                  isSavedPage ? " header__link-title--saved" : ""
-                }${isActive ? " header__link-title--active" : ""}`
+                  isSavedPage ? " header__link-title-saved" : ""
+                }${isActive ? " header__link-title-active" : ""}`
               }
             >
               Saved Articles
@@ -122,7 +122,7 @@ function Header({
 
           <button
             className={`header__button${
-              isSavedPage ? " header__button--saved" : ""
+              isSavedPage ? " header__button-saved" : ""
             }`}
             onClick={user ? onLogout : onSignInClick}
           >
