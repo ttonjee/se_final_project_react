@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import githubIcon from "../../assets/github.svg";
 import linkedinIcon from "../../assets/icons/Linkedin.svg";
 import "./Footer.css";
@@ -11,9 +12,9 @@ function Footer() {
 
         <nav className="footer__links" aria-label="Footer navigation">
           <div className="footer__link-group">
-            <a href="/" className="footer__link">
+            <Link to="/" className="footer__link">
               Home
-            </a>
+            </Link>
             <a
               href="https://tripleten.com"
               className="footer__link"
