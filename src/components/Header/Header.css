@@ -297,17 +297,15 @@
   .header__button {
     display: none;
   }
+
+  .header__menu-icon {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 508px) {
   .header__content {
     width: 280px;
     height: auto;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .header__menu-icon {
-    display: block;
   }
 }
