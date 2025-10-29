@@ -1,0 +1,311 @@
+.header__logout-icon {
+  filter: brightness(0) invert(1);
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+.header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 86px;
+  background-color: transparent;
+  padding: 8px 104px 0px; /* large padding on desktop */
+  box-sizing: border-box;
+  box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  border: 1px solid transparent;
+}
+
+.header__nav {
+  display: flex;
+  gap: 16px;
+}
+
+.header__container-saved {
+  position: relative;
+}
+
+.header__container-saved .header__link-title,
+.header__container-saved .header__link-title-saved {
+  color: #1a1b22 !important;
+}
+.header__container-saved .header__button,
+.header__button-saved {
+  color: #1a1b22 !important;
+  border-color: rgba(26, 27, 34, 0.5);
+}
+
+.header__container-saved .header__title-saved {
+  color: rgba(26, 27, 34, 1) !important;
+  margin: 0;
+}
+
+.header__container-saved .header__link-title,
+.header__container-saved .header__link-title-saved {
+  display: inline-block;
+  position: relative;
+}
+
+.header__container-saved .header__link-title .header__underline,
+.header__container-saved .header__link-title-saved .header__underline {
+  /* hide the SVG image in saved mode to avoid white stroke overlay */
+  display: none;
+}
+
+/* draw a single black underline using a pseudo-element for saved-mode links */
+.header__container-saved .header__link-title::after,
+.header__container-saved .header__link-title-saved::after {
+  content: "";
+  position: absolute; /* position relative to the link */
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #1a1b22;
+  top: 26px; /* align with previous header underline position */
+  visibility: hidden;
+  position: absolute;
+  top: 48px;
+}
+
+.header__container-saved .header__link-title-active::after {
+  visibility: visible;
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 80px;
+  margin: 0 auto;
+}
+
+.header__title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 1);
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.header__link-title {
+  font-family: "Roboto", serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  margin-top: 11px;
+}
+
+.header__link-title-active .header__underline {
+  background: #1a1b22 !important;
+  visibility: visible;
+}
+
+.header__underline {
+  visibility: hidden;
+}
+
+.header__underline {
+  width: 68px;
+  height: 3px;
+  background: rgba(255, 255, 255, 1);
+  position: relative;
+  top: 26px;
+}
+
+.header__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+}
+
+.header__box {
+  border: 1px solid;
+  width: 100%;
+  height: 230px;
+  background-color: rgba(26, 27, 34, 1);
+}
+
+.header__box-container {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) inset;
+  box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__box-title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  margin: 0;
+  padding: 16px;
+}
+
+.header__box-close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  right: 34px;
+  top: -3px;
+}
+
+.header__box-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 56px);
+  gap: 32px;
+}
+
+.header__link-box-title {
+  font-family: "Roboto", serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 56px;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+  margin-right: auto;
+  padding-left: 16px;
+}
+
+.header__box-signin-button {
+  padding: 16px 116px 16px 117px;
+  border-radius: 100px;
+  border: solid 1px rgba(255, 255, 255, 1);
+  background-color: rgba(26, 27, 34, 1);
+  color: rgba(255, 255, 255, 1);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.header__box .header__box .header__nav {
+  display: flex;
+  align-items: center;
+  gap: 2.62rem;
+}
+
+.header__button {
+  width: 179px;
+  border-radius: 100px;
+  border: solid 1px rgba(255, 255, 255, 0.5);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  background: transparent;
+  padding: 12px 12px 12px 12px;
+  position: relative;
+  text-align: center;
+}
+
+.header__menu-icon {
+  display: none;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .header__container {
+    padding: 22.73px 40px 18.47px 40px;
+  }
+
+  .header__image {
+    width: 100%;
+    max-width: none;
+  }
+
+  .header__content {
+    flex-direction: column;
+    text-align: center;
+    width: 320px;
+    height: 536px;
+  }
+
+  .header__title {
+    font-size: 20px;
+  }
+
+  .header__logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header__button {
+    width: 152px;
+  }
+
+  .header__container-saved .header__button,
+  .header__button-saved {
+    width: 100px;
+    height: 40px;
+    padding: 7px 50px 8px 15px;
+  }
+}
+
+@media (max-width: 645px) {
+  .header__container {
+    height: 56px;
+    margin: 0 auto;
+  }
+
+  .header .header__title {
+    font-size: 16px;
+  }
+  .header__link-title {
+    display: none;
+  }
+
+  .header__button {
+    display: none;
+  }
+
+  .header__menu-icon {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 508px) {
+  .header__content {
+    width: 280px;
+    height: auto;
+  }
+}

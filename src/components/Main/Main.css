@@ -1,0 +1,231 @@
+/* Article cards grid styling */
+.main__cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+  gap: 16px;
+  margin-bottom: 64px;
+  padding: 0;
+}
+.main {
+  /* allow main to grow so footer is pushed to bottom */
+  flex: 1 0 auto;
+}
+
+.search-section {
+  height: 576px; /* full viewport height */
+  width: 100%;
+  margin: 0 auto;
+
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+    url("../../assets/Main Page not logged 2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+  padding: 160px 0 80px 0;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.search-section__content {
+  max-width: 608px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.search-section__title {
+  font-family: "Roboto Slab", serif;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 64px;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
+  margin: 0 auto 32px auto; /* center, with bottom spacing */
+  text-align: start;
+}
+
+.search-section__subtitle {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 88px;
+  opacity: 1;
+  color: rgba(255, 255, 255, 1);
+  width: 100%;
+  letter-spacing: 0px;
+}
+
+.results-section {
+  background-color: rgba(245, 246, 247, 1);
+}
+
+.results-section__content {
+  margin: 0 auto;
+  padding: 80px 104px 80px 104px;
+  text-align: center;
+}
+
+.results-section__title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1a1b22;
+  margin: 0 0 64px 0;
+  text-align: left;
+}
+
+.results-section__not-found-image {
+  width: 82.5px;
+  height: 82.5px;
+  color: rgba(108, 112, 122, 1);
+  border: 1px solid rgba(108, 112, 122, 1);
+  margin-bottom: 31.5px;
+}
+
+.results-section__not-found {
+  text-align: center;
+}
+
+.results-section__not-found-title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  letter-spacing: 0px;
+  color: rgba(26, 27, 34, 1);
+  margin: 0 0 16px 0;
+}
+
+.results-section__not-found-text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(108, 112, 122, 1);
+  max-width: 356px;
+  margin: 0 auto;
+  line-height: 24px;
+}
+
+.results-section__show-more {
+  background: transparent;
+  border: 1px solid #1a1b22;
+  border-radius: 80px;
+  color: #1a1b22;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 40px auto 0;
+  padding: 18px 20px;
+  transition: all 0.3s ease;
+  min-width: 288px;
+  display: block;
+}
+
+.results-section__show-more:hover {
+  background: #1a1b22;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+  .main__cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .results-section__content {
+    padding: 48px 24px;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .search-section {
+    padding: 85px 20px 40px;
+  }
+
+  .search-section__title {
+    font-size: 36px;
+    line-height: 44px;
+    width: 100%;
+    margin: 25px 0 16px 15px;
+    text-align: start;
+  }
+
+  .search-section__subtitle {
+    text-align: start;
+    width: 100%;
+    max-width: 452px;
+    position: relative;
+    left: 0;
+    padding-left: 20px; /* keep some visual offset without overflowing */
+    margin-bottom: 24px;
+  }
+
+  .search-section__content {
+    padding: 0;
+  }
+
+  .results-section__content {
+    padding: 32px 16px;
+  }
+
+  .main__cards-grid {
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+}
+
+@media screen and (max-width: 526px) {
+  .results-section__show-more {
+    width: 240px;
+    height: 56px;
+  }
+
+  .search-section__subtitle {
+    max-width: 288px;
+  }
+}
+
+@media screen and (max-width: 462px) {
+  .results-section__title {
+    width: 285px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .search-section__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main__cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  }
+
+  .search-section {
+    max-height: 536px;
+  }
+  .search-section__title {
+    font-size: 36px;
+    max-width: 285px;
+    height: 80px;
+    margin: 0;
+    line-height: 36px;
+  }
+  .search-section__subtitle {
+    font-size: 18px;
+    width: 288px;
+    margin: 16px 0 0 0;
+    left: 10px;
+    padding: 0;
+  }
+
+  results-section__show-more {
+    width: 240px;
+    height: 56px;
+  }
+}

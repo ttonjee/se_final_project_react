@@ -1,0 +1,48 @@
+/* Base layout reset */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Root container */
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+/* App wrapper */
+.app {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* fill parent's height */
+  width: 100%;
+}
+
+/* Page content */
+.page {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  overflow-y: auto; /* Add this if vertical scrolling is needed */
+}
+
+/* Footer stays pinned */
+.footer {
+  flex-shrink: 0;
+}

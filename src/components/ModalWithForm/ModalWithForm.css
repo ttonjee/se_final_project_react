@@ -1,0 +1,226 @@
+/* Registration Success Modal Styles */
+.modal__container-success {
+  max-width: 430px;
+  height: 182px;
+  padding: 43px 36px 51px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal__title-success {
+  color: #2e7d32;
+  text-align: center;
+  margin-bottom: 18px;
+}
+.modal__container .modal__submit {
+  background: rgba(230, 232, 235, 1);
+  color: rgba(182, 188, 191, 1);
+  border: none;
+  border-radius: 100px;
+  padding: 16px 0;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+}
+.modal__container .modal__submit:hover {
+  background: rgba(47, 113, 229, 1);
+}
+.modal__container .modal__link {
+  color: rgba(47, 113, 229, 1);
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0;
+}
+.modal__error {
+  color: rgba(255, 0, 0, 1);
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  text-align: left;
+  visibility: hidden;
+}
+.modal__error-visible {
+  visibility: visible;
+}
+.modal__input-line {
+  width: 100%;
+  max-width: 358px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  padding: 6px 0; /* no horizontal padding */
+  outline: none;
+  background: transparent;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin-bottom: 12px;
+  color: rgba(47, 113, 229, 1);
+  text-align: left;
+}
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.modal__button-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+  align-items: center;
+}
+
+.modal__submit {
+  background: rgba(230, 232, 235, 1);
+  color: rgba(182, 188, 191, 1);
+  border: none;
+  border-radius: 100px;
+  padding: 20px 114px 20px 114px;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.modal__submit:hover {
+  background: rgba(47, 113, 229, 1);
+  color: rgba(255, 255, 255, 1);
+}
+.modal__link {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 14px;
+  color: rgba(47, 113, 229, 1);
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 0;
+}
+.modal__text {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 15px;
+  color: #444;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-opened {
+  opacity: 1;
+  visibility: visible;
+}
+.modal__container {
+  background: rgba(255, 255, 255, 1);
+  border-radius: 16px;
+  padding: 34px 36px 28px 36px;
+  width: 100%;
+  height: 318px;
+  max-width: 358px;
+  position: relative;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+  align-items: center;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 18px;
+}
+
+.modal__title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: rgba(26, 27, 34, 1);
+  margin: 0 0 24px 0;
+  text-align: left;
+}
+
+.modal__close-button {
+  position: absolute;
+  top: -33px;
+  right: -33px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__close-icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+}
+
+.modal__container-signin {
+  max-width: 358px;
+  height: 406px;
+  padding: 24px 36px 28px 36px;
+}
+
+.modal__form-register {
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .modal--opened .modal__container-signin {
+    background-image: url("../../assets/Keyboard.svg");
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 160px auto;
+  }
+  .modal__container {
+    width: 430px;
+  }
+
+  .modal__close-button {
+    background-image: transparent;
+  }
+}
+
+@media screen and (max-width: 508px) {
+  .modal__container {
+    height: 560px;
+    position: relative;
+    top: -80px;
+    right: 0;
+  }
+
+  .modal__close-button {
+    right: 20px;
+  }
+
+  .modal__close-icon {
+    width: 24px;
+    height: 24px;
+  }
+}

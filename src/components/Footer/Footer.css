@@ -1,0 +1,121 @@
+.footer {
+  width: 100%;
+  background: rgba(255, 255, 255, 1);
+  opacity: 1;
+  color: #1a1b22;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px 0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.footer__content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes items to opposite ends */
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.footer__text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: rgba(182, 188, 191, 1);
+  /* Removed position, left */
+}
+
+.footer__links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0px;
+  color: rgba(26, 27, 34, 1);
+  /* Removed margin-left */
+}
+
+.footer__link {
+  color: #1a1b22;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.footer__link:hover {
+  color: #2f71e5;
+}
+
+.footer__link-group {
+  display: flex;
+  gap: 40px;
+}
+
+.footer__icons {
+  display: flex;
+  gap: 24px;
+}
+
+.footer__github-icon {
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.3s ease;
+}
+
+.footer__linkedin-icon {
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.3s ease;
+}
+
+.footer__link--github:hover .footer__github_type_icon {
+  opacity: 0.7;
+}
+
+.footer__link--linkedin:hover .footer__linkedin_type_icon {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .footer__content {
+    padding: 0 40px 0 40px;
+  }
+
+  .footer {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 645px) {
+  .footer__content {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .footer__link-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer__links {
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .footer__icons {
+    display: flex;
+    gap: 20px;
+  }
+}
